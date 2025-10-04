@@ -1,0 +1,51 @@
+---
+layout: default
+title: Explorar por Categorias e Tags
+permalink: /categorias/ # Define a URL principal para categorias
+---
+
+<div class="py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-primary border-bottom border-primary">
+                    Explorar Projetos
+                </h3>
+
+                <h6 class="text-primary border-bottom mb-2 border-primary">
+                    categorias
+                </h6>
+
+                {% assign categories = site.categories | keys | sort %} {% for
+                category in categories %}
+                <a
+                    href="{{ '/categorias/' | relative_url }}{{ category | slugify }}/"
+                    class="text-decoration-none"
+                >
+                    <span class="badge badge-success h4 py-1 px-2 badge-pill">
+                        {{ category | upcase }}
+                    </span>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h6 class="text-primary pt-3 mb-2 border-bottom border-primary">
+                    tags
+                </h6>
+
+                {% assign tags = site.tags | keys | sort %} {% for tag in tags
+                %}
+                <a
+                    href="{{ '/tags/' | relative_url }}{{ tag | slugify }}/"
+                    class="text-decoration-none"
+                >
+                    <span class="badge badge-pill badge-info"> {{ tag }} </span>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

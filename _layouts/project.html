@@ -1,0 +1,56 @@
+---
+layout: default
+title: { { page.title | default: "Página de Projeto" } }
+---
+
+<div class="py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-primary border-bottom border-primary">
+                    {{ page.title }}
+                </h3>
+                <h6 class="text-primary mb-0">
+                    {{ page.student }} ({{ page.period }})
+                </h6>
+
+                {% for cat in page.categories limit:1 %}
+                <a
+                    href="{{ '/categorias/' | relative_url }}{{ cat | slugify }}/"
+                >
+                    <span class="badge badge-success h4 py-1 px-2 badge-pill">
+                        {{ cat }}
+                    </span>
+                </a>
+                {% endfor %} {% for tag in page.tags %}
+                <a href="{{ '/tags/' | relative_url }}{{ tag | slugify }}/">
+                    <span class="badge badge-pill badge-info"> {{ tag }} </span>
+                </a>
+                {% endfor %} {% if page.awards %} {% for prize_name in
+                page.awards %}
+                <span class="badge badge-dark h4 py-1 px-2 badge-pill">
+                    🏆 {{ prize_name }}
+                </span>
+                {% endfor %} {% endif %}
+            </div>
+        </div>
+
+        <div class="row pt-2">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <article class="conteudo-md">
+                    {% if page.thumbnail %}
+                    <div class="project-cover-mask mb-3">
+                        <img
+                            src="{{ page.thumbnail | relative_url }}"
+                            alt="Capa do projeto {{ page.title }}"
+                            class="img-fluid"
+                        />
+                    </div>
+                    {% endif %} {{ content }}
+                </article>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</div>

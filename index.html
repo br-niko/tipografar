@@ -1,0 +1,90 @@
+---
+layout: default
+title: Página Principal
+permalink: /
+---
+
+{% assign latest_period = site.projects | map: 'period' | sort | last %}
+
+<div class="py-0 pt-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 p-0">
+          <form class="form-inline">
+            <div class="input-group w-100">
+              <input type="text" class="form-control border-primary" id="search-input-context" placeholder="Buscar">
+              <div class="input-group-append">
+                <a href="{{ '/search.html' | relative_url }}" class="btn btn-outline-primary" type="button">
+                  <i class="fa fa-search"></i>
+                </a>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+  </div>
+  <div class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="text-primary border-bottom border-primary">Destaques</h3>
+        </div>
+      </div>
+      <div class="row pt-2">
+        
+        {% assign featured_projects = site.projects | where: "featured", true %}
+        {% for project in featured_projects limit: 4 %}
+        
+        <div class="col-md-3">
+          <a href="{{ project.url | relative_url }}" class="text-decoration-none text-body">
+            <div class="card text-center"> 
+              <img class="card-img-top" src="{{ project.thumbnail | relative_url }}" alt="{{ project.title }}">
+              <div class="card-body border-0 rounded-0 pl-0 pt-1">
+                <p class="card-text text-left">
+                  <b>{{ project.title }}</b>
+                  <br>
+                  {{ project.student }}
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+        
+        {% endfor %}
+        </div>
+    </div>
+  </div>
+  <div class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="text-primary border-bottom border-primary">{{ latest_period }}</h3>
+        </div>
+      </div>
+      <div class="row pt-2">
+
+        {% assign recent_projects = site.projects | where: "period", latest_period | where_not: "featured", true %}
+        {% for project in recent_projects %}
+
+        <div class="col-md-3">
+          <a href="{{ project.url | relative_url }}" class="text-decoration-none text-body">
+            <div class="card text-center"> 
+              <img class="card-img-top" src="{{ project.thumbnail | relative_url }}" alt="{{ project.title }}">
+              <div class="card-body border-0 rounded-0 pl-0 pt-1">
+                <p class="card-text text-left">
+                  <b>{{ project.title }}</b>
+                  <br>
+                  {{ project.student }}
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+        
+        {% endfor %}
+        </div>
+    </div>
+  </div>

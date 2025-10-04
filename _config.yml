@@ -1,0 +1,18 @@
+# ARQUIVO: _config.yml (Crie ou Edite na Raiz do Projeto)
+title: Projeto Tipografar - Portfólio
+description: Portfólio de projetos do Projeto Tipografar.
+baseurl: "" # Deixe em branco para rodar localmente e no GitHub Pages
+url: ""
+
+# 1. CONFIGURAÇÃO DE COLEÇÕES (A CORREÇÃO)
+# Isso diz ao Jekyll para processar a pasta _projects como um tipo de post
+collections:
+  projects:
+    output: true
+    permalink: /projetos/:title/ # Define a URL como /projetos/nome-do-projeto
+
+# 2. CONFIGURAÇÃO DE GERAÇÃO DE PÁGINAS DE ÍNDICE (Tags e Categorias)
+# Isso garante que as páginas /tags/ e /categorias/ funcionem
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
