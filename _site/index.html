@@ -43,13 +43,13 @@
                                 >categorias</a
                             >
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a
                                 class="nav-link"
                                 href="/tags"
                                 >tags</a
                             >
-                        </li>
+                            </li> -->
                         <li class="nav-item">
                             <a
                                 class="nav-link"
@@ -66,55 +66,199 @@
 
 <div class="py-0 pt-4">
     <div class="container">
-      <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6 p-0">
-          <form class="form-inline">
-            <div class="input-group w-100">
-              <input type="text" class="form-control border-primary" id="search-input-context" placeholder="Buscar">
-              <div class="input-group-append">
-                <a href="/search.html" class="btn btn-outline-primary" type="button">
-                  <i class="fa fa-search"></i>
-                </a>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="col-md-3"></div>
-      </div>
-    </div>
-  </div>
-  <div class="py-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h3 class="text-primary border-bottom border-primary">Destaques</h3>
-        </div>
-      </div>
-      <div class="row pt-2">
-        
-        
-        
-        </div>
-    </div>
-  </div>
-  <div class="py-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h3 class="text-primary border-bottom border-primary"></h3>
-        </div>
-      </div>
-      <div class="row pt-2">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 p-0 position-relative">
+                <form
+                    action="/busca/"
+                    method="get"
+                    class="form-inline"
+                >
+                    <div class="input-group w-100">
+                        <input
+                            type="text"
+                            class="form-control border-primary"
+                            id="search-input-context"
+                            name="q"
+                            placeholder="Buscar em Título ou Aluno..."
+                            autocomplete="off"
+                        />
+                        <div class="input-group-append">
+                            <button
+                                class="btn btn-outline-primary"
+                                type="submit"
+                            >
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
 
-        
-        
+                <div
+                    id="quick-search-results"
+                    class="position-absolute w-100 p-0"
+                    style="z-index: 1000"
+                ></div>
+            </div>
+            <div class="col-md-3"></div>
         </div>
     </div>
-  </div>
+</div>
+<div class="py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-primary border-bottom border-primary">
+                    Destaques
+                </h3>
+            </div>
+        </div>
+        <div class="row pt-2">
+             
+
+            <div class="col-md-3">
+                <a
+                    href="/projetos/2025-1-fonte-neo/"
+                    class="text-decoration-none text-body"
+                >
+                    <div class="card text-center">
+                        <img
+                            class="card-img-top"
+                            src="/assets/images/teste.jpg"
+                            alt="Neo Grotesca Modular"
+                        />
+                        <div class="card-body border-0 rounded-0 pl-0 pt-1">
+                            <p class="card-text text-left">
+                                <b>Neo Grotesca Modular</b>
+                                <br />
+                                Sofia Antunes
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            
+
+            <div class="col-md-3">
+                <a
+                    href="/projetos/2021-2-narrativa-espaco-urbano/"
+                    class="text-decoration-none text-body"
+                >
+                    <div class="card text-center">
+                        <img
+                            class="card-img-top"
+                            src="/assets/images/teste.jpg"
+                            alt="Tipografia e Narrativa no Espaço Urbano"
+                        />
+                        <div class="card-body border-0 rounded-0 pl-0 pt-1">
+                            <p class="card-text text-left">
+                                <b>Tipografia e Narrativa no Espaço Urbano</b>
+                                <br />
+                                Pedro Henrique
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+<div class="py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-primary border-bottom border-primary">
+                    2025-1 - Últimos Projetos
+                </h3>
+            </div>
+        </div>
+        <div class="row pt-2">
+             
+
+            <div class="col-md-3">
+                <a
+                    href="/projetos/2021-2-narrativa-espaco-urbano/"
+                    class="text-decoration-none text-body"
+                >
+                    <div class="card text-center">
+                        <img
+                            class="card-img-top"
+                            src="/assets/images/teste.jpg"
+                            alt="Tipografia e Narrativa no Espaço Urbano"
+                        />
+                        <div class="card-body border-0 rounded-0 pl-0 pt-1">
+                            <p class="card-text text-left">
+                                <b>Tipografia e Narrativa no Espaço Urbano</b>
+                                <br />
+                                Pedro Henrique
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            
+
+            <div class="col-md-3">
+                <a
+                    href="/projetos/2025-1-fonte-neo/"
+                    class="text-decoration-none text-body"
+                >
+                    <div class="card text-center">
+                        <img
+                            class="card-img-top"
+                            src="/assets/images/teste.jpg"
+                            alt="Neo Grotesca Modular"
+                        />
+                        <div class="card-body border-0 rounded-0 pl-0 pt-1">
+                            <p class="card-text text-left">
+                                <b>Neo Grotesca Modular</b>
+                                <br />
+                                Sofia Antunes
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            
+
+            <div class="col-md-3">
+                <a
+                    href="/projetos/2025-1-hand-lettering-poster/"
+                    class="text-decoration-none text-body"
+                >
+                    <div class="card text-center">
+                        <img
+                            class="card-img-top"
+                            src="/assets/images/teste.jpg"
+                            alt="Lettering Para Festival de Jazz"
+                        />
+                        <div class="card-body border-0 rounded-0 pl-0 pt-1">
+                            <p class="card-text text-left">
+                                <b>Lettering Para Festival de Jazz</b>
+                                <br />
+                                Carlos Eduardo
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+        <script src="/assets/js/search.js"></script>
+        </body>
     </body>
 </html>

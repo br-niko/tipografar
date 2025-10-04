@@ -1,0 +1,14 @@
+---
+layout: null
+permalink: /search.json
+---
+
+{%- assign projects = site.projects | where_exp:"project", "project.content !=
+nil" -%} [{%- for project in projects -%} { "id": "{{ forloop.index }}",
+"title": "{{ project.title | escape }}", "student": "{{ project.student | escape
+}}", "period": "{{ project.period | escape }}", "categories": "{{
+project.categories | join: ', ' | escape }}", "tags": "{{ project.tags | join:
+', ' | escape }}", "url": "{{ project.url | relative_url }}", "thumbnail": "{{
+project.thumbnail | relative_url }}", "content": "{{ project.content |
+strip_html | strip_newlines | escape }}" }{% unless forloop.last %},{% endunless
+-%} {%- endfor -%}]

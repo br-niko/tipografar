@@ -7,7 +7,7 @@ categories: [experimental linguagem]
 tags: [social, cidade, intervencao]
 featured: true
 awards: []
-thumbnail: /assets/images/exp-linguagem-capa.jpg
+thumbnail: /assets/images/teste.jpg
 ---
 
 ## Análise Semiótica da Intervenção
@@ -16,6 +16,6 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
 ### O Significado da Forma
 At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
 
-![A tipografia aplicada no ambiente urbano](https://via.placeholder.com/800x400/90CAF9/000000?text=Imagem+de+Exemplo:+Tipografia+Urbana)
+![A tipografia aplicada no ambiente urbano](https://placehold.co/600x400)
 
 Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.

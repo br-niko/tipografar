@@ -7,7 +7,7 @@ categories: [design de tipos]
 tags: [sans-serif, modular, opentype]
 featured: true
 awards: []
-thumbnail: /assets/images/design-neo-capa.jpg
+thumbnail: /assets/images/teste.jpg
 ---
 
 ## Resumo Executivo: Criação de um Sistema Tipográfico
@@ -17,6 +17,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec ante id sap
 ### O Processo de Desenho
 Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Aenean a ipsum quis sapien tincidunt pulvinar. Nunc dictum orci sit amet enim dignissim, at euismod nisl ultricies. Maecenas vel lorem ac sem posuere.
 
-![Exemplo de kerning e ajustes ópticos](https://via.placeholder.com/800x400/81C784/FFFFFF?text=Imagem+de+Exemplo:+Ajustes+Opticos)
+![Exemplo de kerning e ajustes ópticos](https://placehold.co/600x400)
 
 Donec malesuada mi id orci aliquet, a blandit leo convallis. Sed id risus eu eros varius viverra. Ut feugiat, libero sit amet tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget semper nibh. Curabitur vel leo.
