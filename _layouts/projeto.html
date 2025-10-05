@@ -8,19 +8,24 @@ layout: default
     <header class="project-header mb-4">
         <h1 class="page-title">{{ page.title }}</h1>
         <p class="project-author">por {{ page.aluno }}</p>
-        <div class="project-meta">
-            <span class="badge bg-primary me-2">{{ page.categoria }}</span>
-            <span class="badge bg-secondary me-2">{{ page.semestre }}</span>
+        <div class="project-meta d-flex align-items-center">
+            {% comment %} Classe corrigida para 'category-badge' para usar o
+            estilo de botão azul. {% endcomment %}
+            <a
+                href="/categorias/{{ page.categories | first | slugify }}/"
+                class="category-badge me-2 mb-2"
+                >{{ page.categories | first }}</a
+            >
+
+            <a href="#" class="archive-tag me-2 mb-2">{{ page.semestre }}</a>
+
             {% if page.premio and page.premio != "" %}
-            <span class="badge text-bg-purple me-2">{{ page.premio }}</span>
+            <span class="award-tag me-2 mb-2">{{ page.premio }}</span>
             {% endif %}
         </div>
     </header>
 
     <hr class="mb-4" />
 
-    {% comment %} A tag {{ content }} é a mágica do Jekyll. Todo o conteúdo que
-    o aluno escreveu no arquivo .md (depois do ---) será inserido aqui. {%
-    endcomment %}
     <div class="project-content">{{ content }}</div>
 </article>

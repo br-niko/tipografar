@@ -10,7 +10,6 @@
           this.field("aluno");
           this.field("tags");
           this.field("content");
-
           data.forEach(function (doc, idx) {
             doc.id = idx;
             this.add(doc);
@@ -21,28 +20,20 @@
         console.error("Erro ao carregar o search.json:", error),
       );
   }
-
   function showSearchResults() {
     const query = this.value;
     const resultsContainer = document.getElementById("search-results");
-
     if (!query || query.length < 2 || !window.lunrIdx) {
       resultsContainer.innerHTML = "";
       resultsContainer.style.display = "none";
       return;
     }
-
     const results = window.lunrIdx.search(query + "* " + query);
     let output = '<ul class="list-group">';
-
-    // --- A CORREÇÃO ESTÁ AQUI ---
-    // Filtra os resultados para garantir que cada projeto apareça apenas uma vez.
     const uniqueResults = results.filter(
       (result, index, self) =>
         index === self.findIndex((t) => t.ref === result.ref),
     );
-    // -----------------------------
-
     if (uniqueResults.length === 0) {
       output += '<li class="list-group-item">Nenhum resultado encontrado.</li>';
     } else {
@@ -51,14 +42,11 @@
         output += `<li class="list-group-item"><a href="${doc.url}">${doc.title}</a><br><small>${doc.aluno}</small></li>`;
       });
     }
-
     output += "</ul>";
     resultsContainer.innerHTML = output;
     resultsContainer.style.display = "block";
   }
-
   initLunr();
-
   const searchInput = document.getElementById("search-input");
   if (searchInput) {
     searchInput.addEventListener("keyup", showSearchResults);

@@ -1,23 +1,44 @@
-<footer class="py-5 mt-5 border-top">
+<footer class="py-5 mt-5 border-top" id="navegacao-tags">
     <div class="container">
         <div class="mb-5">
             <h5 class="section-title">Arquivo</h5>
-            {% assign semestres = site.projetos | map: "semestre" | uniq | sort
-            | reverse %} {% for semestre in semestres %}
-            <a href="#" class="archive-tag me-2 mb-2">{{ semestre }}</a>
-            {% endfor %}
+
+            <div class="mb-3">
+                {% assign categorias = site.posts | map: "categories" | compact
+                | uniq | sort %} {% for categoria in categorias %}
+                <a
+                    href="/categorias/{{ categoria | slugify }}/"
+                    class="category-badge me-2 mb-2"
+                    >{{ categoria }}</a
+                >
+                {% endfor %}
+            </div>
+
+            <div>
+                {% assign semestres = site.posts | map: "semestre" | compact |
+                uniq | sort | reverse %} {% for semestre in semestres %}
+                <a href="#" class="archive-tag me-2 mb-2">{{ semestre }}</a>
+                {% endfor %}
+            </div>
         </div>
 
         <div>
             <div class="tag-cloud">
-                {% assign tags = site.projetos | map: "tags" | join: ", " |
-                split: ", " | uniq | sort %} {% for tag in tags %} {% if tag !=
-                "" %} {% assign tag_count = 0 %} {% for project in site.projetos
-                %} {% if project.tags contains tag %} {% assign tag_count =
-                tag_count | plus: 1 %} {% endif %} {% endfor %} {% assign
-                font_size = tag_count | times: 4 | plus: 12 %}
+                {% comment %} Passo A: Cria uma lista vazia. {% endcomment %} {%
+                assign all_tags = "" | split: "" %} {% comment %} Passo B: Para
+                cada projeto, junta (concatena) sua lista de tags à lista
+                principal. Isso evita os problemas de join/split com vírgulas e
+                espaços. {% endcomment %} {% for post in site.posts %} {% assign
+                all_tags = all_tags | concat: post.tags %} {% endfor %} {%
+                comment %} Passo C: Agora sim, removemos os duplicados e
+                ordenamos a lista limpa. {% endcomment %} {% assign tags =
+                all_tags | uniq | sort %} {% for tag in tags %} {% if tag != ""
+                %} {% assign tag_count = 0 %} {% for project in site.posts %} {%
+                if project.tags contains tag %} {% assign tag_count = tag_count
+                | plus: 1 %} {% endif %} {% endfor %} {% assign font_size =
+                tag_count | times: 4 | plus: 12 %}
                 <a
-                    href="#"
+                    href="/tags/{{ tag | slugify }}/"
                     class="tag-link"
                     style="font-size: {{ font_size }}px;"
                     >{{ tag }}</a

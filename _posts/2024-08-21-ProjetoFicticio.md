@@ -3,7 +3,7 @@ title: "Projeto de Tipografia Fictício 2"
 layout: projeto
 aluno: "Aluno Nome Completo 2"
 semestre: "2024/2"
-categoria: "Lettering"
+categories: ["lettering"]
 tags:
   - "caligrafia"
   - "capa de livro"

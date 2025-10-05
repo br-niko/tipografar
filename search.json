@@ -2,7 +2,7 @@
 layout: null
 ---
 [
-  {% for projeto in site.projetos %}
+  {% for projeto in site.posts %}
     {
       "title": "{{ projeto.title | escape }}",
       "aluno": "{{ projeto.aluno | escape }}",

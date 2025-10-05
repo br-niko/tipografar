@@ -2,8 +2,7 @@
 layout: default
 ---
 
-{% comment %} --- SEÇÃO PRINCIPAL (PROJETO ALEATÓRIO) --- {% endcomment %}
-<section class="mb-5">
+<section class="mb-5 pt-4">
     <div id="random-featured-project" class="loading row align-items-center">
         <div class="col-lg-6">
             <div
@@ -21,15 +20,13 @@ layout: default
         </div>
     </div>
 </section>
-
-{% comment %} --- SEÇÃO DE DESTAQUES (GRADE) --- {% endcomment %}
 <section class="mb-5">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2 class="section-title">Destaques</h2>
         <a href="#" class="link-primary">ver todos →</a>
     </div>
     <div class="row">
-        {% for projeto in site.projetos %}{% if projeto.featured == true %}
+        {% for projeto in site.posts %}{% if projeto.featured == true %}
         <div class="col-md-4 mb-4">
             <div class="card h-100">
                 <div style="height: 200px; background-color: #eee"></div>
@@ -46,18 +43,16 @@ layout: default
         {% endif %}{% endfor %}
     </div>
 </section>
-
-{% comment %} --- SEÇÃO DE ÚLTIMOS PROJETOS --- {% endcomment %}
 <section class="mb-5">
-    {% assign latest_semester = site.projetos | map: "semestre" | uniq | sort |
-    last %}
+    {% assign latest_semester = site.posts | map: "semestre" | uniq | sort |
+    last %}{% if latest_semester %}
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2 class="section-title">{{ latest_semester }}</h2>
         <a href="#" class="link-primary">ver todos →</a>
     </div>
     <div class="row">
-        {% for projeto in site.projetos %}{% if projeto.semestre ==
-        latest_semester %}
+        {% for projeto in site.posts %}{% if projeto.semestre == latest_semester
+        %}
         <div class="col-md-4 mb-4">
             <div class="card h-100">
                 <div style="height: 200px; background-color: #eee"></div>
@@ -73,4 +68,5 @@ layout: default
         </div>
         {% endif %}{% endfor %}
     </div>
+    {% endif %}
 </section>

@@ -1,17 +1,17 @@
 ---
-title: "Projeto de Tipografia Fictício 6"
+title: "Projeto de Tipografia Fictício 66"
 layout: projeto
-aluno: "Aluno Nome Completo 6"
-semestre: "2022/1"
-categoria: "Experimento de Processo"
+aluno: "Aluno Nome Completo 66"
+semestre: "2023/1"
+categories: ["lettering"]
 tags:
-  - "design generativo"
+  - "capa de disco"
   - "pôster"
 premio: ""
 featured: false
 imagem_capa: "/assets/img/placeholder.jpg"
 ---
 
-## Subtítulo do projeto 6
+## Subtítulo do projeto 66
 
 Mauris iaculis porttitor posuere. Praesent id metus massa, ut blandit odio. Proin quis tortor orci.

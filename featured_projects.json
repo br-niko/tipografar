@@ -2,7 +2,7 @@
 layout: null
 ---
 [
-  {% for projeto in site.projetos %}
+  {% for projeto in site.posts %}
     {% if projeto.featured == true %}
       {
         "title": "{{ projeto.title | escape }}",

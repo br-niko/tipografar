@@ -4,12 +4,20 @@
       {
         "title": "Projeto de Tipografia Fictício 1",
         "aluno": "Aluno Nome Completo 1",
-        "url": "/projetos/projeto-exemplo-01/",
+        "url": "/projetos/ProjetoFicticio1/",
         "imagem_capa": "/assets/img/placeholder.jpg"
       }
       ,
     
   
+    
+      {
+        "title": "Projeto de Tipografia 9",
+        "aluno": "Aluno Nome Completo 9",
+        "url": "/projetos/Projeto9/",
+        "imagem_capa": "/assets/img/placeholder.jpg"
+      }
+      ,
     
   
     
@@ -18,7 +26,7 @@
       {
         "title": "Projeto de Tipografia Fictício 4",
         "aluno": "Aluno Nome Completo 4",
-        "url": "/projetos/projeto-exemplo-04/",
+        "url": "/projetos/Projeto4/",
         "imagem_capa": "/assets/img/placeholder.jpg"
       }
       ,
@@ -29,13 +37,7 @@
     
   
     
-      {
-        "title": "Projeto de Tipografia Fictício 4",
-        "aluno": "Aluno Nome Completo 7",
-        "url": "/projetos/projeto-exemplo-07/",
-        "imagem_capa": "/assets/img/placeholder.jpg"
-      }
-      
+  
     
   
 ]

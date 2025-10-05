@@ -2,22 +2,32 @@
 title: Projeto Tipografar
 email: seu-email@exemplo.com
 description: >-
-  Um portfóflio de projetos de design tipográfico e lettering
+  Um portfólio de projetos de design tipográfico e lettering
   desenvolvidos na disciplina.
-baseurl: "" # Deixe vazio por enquanto
-url: "" # Deixe vazio por enquanto
+baseurl: ""
+url: ""
+
+# --- Lista de Plugins ---
+plugins:
+  - jekyll-feed
+  - jekyll-archives
 
 # --- Configuração de Build ---
-permalink: /:title/
+permalink: /projetos/:title/
 sass:
   sass_dir: scss
   style: compressed
   load_paths:
     - node_modules
 
-# --- Coleções ---
-# Aqui definimos que teremos uma coleção de "projetos"
-collections:
-  projetos:
-    output: true
-    permalink: /projetos/:title/
+# --- Configuração do Plugin Jekyll Archives ---
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layouts:
+    category: "list"
+    tag: "list"
+  permalinks:
+    category: "/categorias/:name/"
+    tag: "/tags/:name/"
