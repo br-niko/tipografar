@@ -1,0 +1,35 @@
+<footer class="py-5 mt-5 border-top">
+    <div class="container">
+        <div class="mb-5">
+            <h5 class="section-title">Arquivo</h5>
+            {% assign semestres = site.projetos | map: "semestre" | uniq | sort
+            | reverse %} {% for semestre in semestres %}
+            <a href="#" class="archive-tag me-2 mb-2">{{ semestre }}</a>
+            {% endfor %}
+        </div>
+
+        <div>
+            <div class="tag-cloud">
+                {% assign tags = site.projetos | map: "tags" | join: ", " |
+                split: ", " | uniq | sort %} {% for tag in tags %} {% if tag !=
+                "" %} {% assign tag_count = 0 %} {% for project in site.projetos
+                %} {% if project.tags contains tag %} {% assign tag_count =
+                tag_count | plus: 1 %} {% endif %} {% endfor %} {% assign
+                font_size = tag_count | times: 4 | plus: 12 %}
+                <a
+                    href="#"
+                    class="tag-link"
+                    style="font-size: {{ font_size }}px;"
+                    >{{ tag }}</a
+                >
+                {% endif %} {% endfor %}
+            </div>
+
+            <div class="text-center">
+                <a href="#" class="link-primary small mt-3 d-inline-block"
+                    >ver todas as tags →</a
+                >
+            </div>
+        </div>
+    </div>
+</footer>

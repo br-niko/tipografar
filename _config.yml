@@ -1,0 +1,23 @@
+# --- Configurações Principais ---
+title: Projeto Tipografar
+email: seu-email@exemplo.com
+description: >-
+  Um portfóflio de projetos de design tipográfico e lettering
+  desenvolvidos na disciplina.
+baseurl: "" # Deixe vazio por enquanto
+url: "" # Deixe vazio por enquanto
+
+# --- Configuração de Build ---
+permalink: /:title/
+sass:
+  sass_dir: scss
+  style: compressed
+  load_paths:
+    - node_modules
+
+# --- Coleções ---
+# Aqui definimos que teremos uma coleção de "projetos"
+collections:
+  projetos:
+    output: true
+    permalink: /projetos/:title/

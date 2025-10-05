@@ -1,0 +1,16 @@
+---
+layout: null
+---
+[
+  {% for projeto in site.projetos %}
+    {% if projeto.featured == true %}
+      {
+        "title": "{{ projeto.title | escape }}",
+        "aluno": "{{ projeto.aluno | escape }}",
+        "url": "{{ projeto.url | relative_url }}",
+        "imagem_capa": "{{ projeto.imagem_capa | relative_url }}"
+      }
+      {% unless forloop.last %},{% endunless %}
+    {% endif %}
+  {% endfor %}
+]

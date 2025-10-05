@@ -1,0 +1,29 @@
+// --- GUIA DE ESTILOS (v4.3) ---
+
+// 1. FONTES
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Chivo+Mono:wght@400;700&family=Gloock&display=swap");
+
+// Define as famílias de fonte para o projeto
+$font-family-sans-serif: "Archivo", sans-serif;
+$font-family-serif: "Gloock", serif;
+$font-family-mono: "Chivo Mono", monospace;
+
+// 2. CORES
+$white: #fff;
+$black: #000;
+$light: #f9f6e8;
+$dark: #22253c;
+$primary: #084dfc;
+$premium: #7208fc;
+$muted-blue: #5e699d; // A COR CORRETA
+
+// 3. SOBRESCREVENDO VARIÁVEIS DO BOOTSTRAP
+$body-bg: $light;
+$body-color: $dark;
+$link-color: $primary;
+$headings-font-family: $font-family-serif;
+$headings-color: $dark;
+
+// Configuração para o motor de Fontes Responsivas (RFS)
+$rfs-base-font-size: 1rem;
+$rfs-font-size-unit: rem;
