@@ -86,16 +86,6 @@ body {
     text-decoration: none;
     font-family: $font-family-sans-serif;
 }
-.tag-cloud {
-    text-align: center;
-    line-height: 2.2;
-}
-.tag-link {
-    display: inline-block;
-    text-decoration: none;
-    color: $muted-blue;
-    margin: 0 0.5rem 0.5rem 0.5rem;
-}
 
 .site-header .logo-link {
     flex-direction: column;

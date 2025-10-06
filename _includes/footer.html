@@ -17,39 +17,12 @@
             <div>
                 {% assign semestres = site.posts | map: "semestre" | compact |
                 uniq | sort | reverse %} {% for semestre in semestres %}
-                <a href="#" class="archive-tag me-2 mb-2">{{ semestre }}</a>
-                {% endfor %}
-            </div>
-        </div>
-
-        <div>
-            <div class="tag-cloud">
-                {% comment %} Passo A: Cria uma lista vazia. {% endcomment %} {%
-                assign all_tags = "" | split: "" %} {% comment %} Passo B: Para
-                cada projeto, junta (concatena) sua lista de tags à lista
-                principal. Isso evita os problemas de join/split com vírgulas e
-                espaços. {% endcomment %} {% for post in site.posts %} {% assign
-                all_tags = all_tags | concat: post.tags %} {% endfor %} {%
-                comment %} Passo C: Agora sim, removemos os duplicados e
-                ordenamos a lista limpa. {% endcomment %} {% assign tags =
-                all_tags | uniq | sort %} {% for tag in tags %} {% if tag != ""
-                %} {% assign tag_count = 0 %} {% for project in site.posts %} {%
-                if project.tags contains tag %} {% assign tag_count = tag_count
-                | plus: 1 %} {% endif %} {% endfor %} {% assign font_size =
-                tag_count | times: 4 | plus: 12 %}
                 <a
-                    href="/tags/{{ tag | slugify }}/"
-                    class="tag-link"
-                    style="font-size: {{ font_size }}px;"
-                    >{{ tag }}</a
+                    href="/semestres/{{ semestre | replace: '/', '-' }}/"
+                    class="archive-tag me-2 mb-2"
+                    >{{ semestre }}</a
                 >
-                {% endif %} {% endfor %}
-            </div>
-
-            <div class="text-center">
-                <a href="#" class="link-primary small mt-3 d-inline-block"
-                    >ver todas as tags →</a
-                >
+                {% endfor %}
             </div>
         </div>
     </div>
