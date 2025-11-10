@@ -2,7 +2,7 @@
 title: "Projeto de Tipografia Fictício 1"
 layout: projeto
 aluno: "Aluno Nome Completo 1"
-semestre: "2025/1"
+semestre: "2025/2"
 categories: ["design de tipos"]
 tags:
   - "experimental"
