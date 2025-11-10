@@ -2,27 +2,46 @@
 layout: default
 ---
 
-<div class="list-page">
-    <h1 class="page-title mb-4">{{ page.title }}</h1>
-    <div class="row">
-        {% assign item_type = page.type %}{% assign item_value = page.title %}
-        {% for projeto in site.posts %}{% if item_type == 'category' and
-        projeto.categories contains item_value or item_type == 'semestre' and
-        projeto.semestre == item_value or item_type == 'tag' and projeto.tags
-        contains item_value %}
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div style="height: 200px; background-color: #eee"></div>
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <a href="{{ projeto.url }}" class="text-decoration-none"
-                            >{{ projeto.title }}</a
-                        >
-                    </h5>
-                    <p class="card-text"><small>{{ projeto.aluno }}</small></p>
-                </div>
-            </div>
-        </div>
-        {% endif %}{% endfor %}
-    </div>
+<div class="list-page" style="font-family: monospace; background-color: #f8f8f8; padding: 1rem; border: 1px solid #ddd;">
+
+  <h1 class="page-title" style="font-family: Archivo, sans-serif;">Diagnóstico da Página de Tags: {{ page.title }}</h1>
+  
+  <hr style="margin: 2rem 0;">
+  
+  <h3>1. Informações desta Página de Arquivo:</h3>
+  <ul>
+    <li><strong>Tipo de Página (page.type):</strong> <code>{{ page.type | inspect }}</code></li>
+    <li><strong>Valor do Filtro (page.title):</strong> <code>{{ page.title | inspect }}</code></li>
+  </ul>
+  
+  <hr style="margin: 2rem 0;">
+  
+  <h3>2. Verificando o Primeiro Projeto da Lista:</h3>
+  
+  {% assign primeiro_projeto = site.posts.first %}
+  
+  <p>Analisando o projeto: <strong>{{ primeiro_projeto.title }}</strong></p>
+  
+  <ul>
+    <li><strong>Categorias deste projeto (projeto.categories):</strong> <code>{{ primeiro_projeto.categories | inspect }}</code></li>
+    <li><strong>Tags deste projeto (projeto.tags):</strong> <code>{{ primeiro_projeto.tags | inspect }}</code></li>
+  </ul>
+
+  <hr style="margin: 2rem 0;">
+
+  <h3>3. Teste de Comparação Direta (A Causa do Problema):</h3>
+
+  <p>O Jekyll está tentando verificar se a lista de tags do projeto (<code>{{ primeiro_projeto.tags | inspect }}</code>) contém o valor do filtro (<code>{{ page.title | inspect }}</code>).</p>
+  
+  <p style="font-size: 1.2rem; padding: 1rem; background-color: #fff; border: 1px solid #ccc;">
+    O resultado da comparação `projeto.tags contains page.title` é: 
+    <strong style="color: red;">
+      {% if primeiro_projeto.tags contains page.title %}
+        VERDADEIRO
+      {% else %}
+        FALSO
+      {% endif %}
+    </strong>
+  </p>
+
 </div>
