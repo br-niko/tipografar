@@ -12,13 +12,13 @@ layout: default
 
     {% for projeto in site.posts %}
       
-      {% comment %} 
-        Esta é a nova lógica, muito mais robusta. 
-        Ela vai checar cada item da lista, um por um, 
-        convertendo para minúsculas antes de comparar.
-      {% endcomment %}
-      
       {% assign found = false %}
+
+      {% comment %} 
+        Esta é a nova lógica. 
+        Ela checa o tipo da página primeiro e DEPOIS faz o loop
+        nas tags ou categorias, comparando-as em minúsculas.
+      {% endcomment %}
 
       {% if item_type == 'category' %}
         {% for cat in projeto.categories %}
