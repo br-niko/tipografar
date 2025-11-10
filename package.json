@@ -1,5 +1,14 @@
 {
+  "name": "tipografar",
+  "version": "1.0.0",
+  "description": "Portfolio de tipografia",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Niko",
+  "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.3.8"
+    "bootstrap": "^5.3.3"
   }
 }

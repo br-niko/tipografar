@@ -2,27 +2,21 @@
     <div class="container">
         <div class="mb-5">
             <h5 class="section-title">Arquivo</h5>
-
             <div class="mb-3">
                 {% assign categorias = site.posts | map: "categories" | compact
-                | uniq | sort %} {% for categoria in categorias %}
-                <a
+                | uniq | sort %}{% for categoria in categorias %}<a
                     href="/categorias/{{ categoria | slugify }}/"
                     class="category-badge me-2 mb-2"
                     >{{ categoria }}</a
-                >
-                {% endfor %}
+                >{% endfor %}
             </div>
-
             <div>
                 {% assign semestres = site.posts | map: "semestre" | compact |
-                uniq | sort | reverse %} {% for semestre in semestres %}
-                <a
+                uniq | sort | reverse %}{% for semestre in semestres %}<a
                     href="/semestres/{{ semestre | replace: '/', '-' }}/"
                     class="archive-tag me-2 mb-2"
                     >{{ semestre }}</a
-                >
-                {% endfor %}
+                >{% endfor %}
             </div>
         </div>
     </div>

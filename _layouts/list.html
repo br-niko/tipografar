@@ -4,14 +4,12 @@ layout: default
 
 <div class="list-page">
     <h1 class="page-title mb-4">{{ page.title }}</h1>
-
     <div class="row">
-        {% assign item_type = page.type %} {% assign item_value = page.title %}
-        {% for projeto in site.posts %} {% if item_type == 'category' and
+        {% assign item_type = page.type %}{% assign item_value = page.title %}
+        {% for projeto in site.posts %}{% if item_type == 'category' and
         projeto.categories contains item_value or item_type == 'semestre' and
         projeto.semestre == item_value or item_type == 'tag' and projeto.tags
         contains item_value %}
-
         <div class="col-md-4 mb-4">
             <div class="card h-100">
                 <div style="height: 200px; background-color: #eee"></div>
@@ -25,7 +23,6 @@ layout: default
                 </div>
             </div>
         </div>
-
-        {% endif %} {% endfor %}
+        {% endif %}{% endfor %}
     </div>
 </div>
