@@ -1,4 +1,4 @@
-// --- GUIA DE ESTILOS (v4.4 - Tema Vermelho) ---
+// --- GUIA DE ESTILOS (v4.5 - Tema Vermelho Seletivo) ---
 
 // 1. FONTES
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Chivo+Mono:wght@400;700&family=Gloock&display=swap");
@@ -13,14 +13,15 @@ $white: #fff;
 $black: #000;
 $light: #f9f6e8;
 $dark: #22253c;
-$primary: #dc3545; // <-- MUDOU DE AZUL PARA VERMELHO
+$primary: #dc3545; // <-- VERMELHO (agora a cor principal de links)
 $premium: #7208fc; // Roxo (mantido)
-$muted-blue: #dc3545; // <-- MUDOU DE AZUL-ACINZENTADO PARA VERMELHO
+$muted-blue: #5e699d; // <-- AZUL-ACINZENTADO (para semestre/nuvem)
+$category-blue: #084dfc; // <-- AZUL BRILHANTE (para categorias)
 
 // 3. SOBRESCREVENDO VARIÁVEIS DO BOOTSTRAP
 $body-bg: $light;
 $body-color: $dark;
-$link-color: $primary;
+$link-color: $primary; // Links de texto agora são vermelhos
 $headings-font-family: $font-family-serif;
 $headings-color: $dark;
 

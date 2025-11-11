@@ -41,6 +41,7 @@ body {
     }
 }
 
+/* ESTILOS DOS BADGES ATUALIZADOS */
 .category-badge {
     display: inline-block;
     padding: 0.35em 0.65em;
@@ -52,7 +53,7 @@ body {
     white-space: nowrap;
     vertical-align: baseline;
     border-radius: 0.25rem;
-    background-color: $primary;
+    background-color: $category-blue; /* <-- MUDADO DE $primary PARA $category-blue */
     text-decoration: none;
     font-family: $font-family-sans-serif;
 }
@@ -67,7 +68,7 @@ body {
     white-space: nowrap;
     vertical-align: baseline;
     border-radius: 0.25rem;
-    background-color: $muted-blue;
+    background-color: $muted-blue; /* <-- CORRETA (azul-acinzentado) */
     text-decoration: none;
     font-family: $font-family-sans-serif;
 }
@@ -94,7 +95,7 @@ body {
 .tag-link {
     display: inline-block;
     text-decoration: none;
-    color: $muted-blue;
+    color: $muted-blue; /* <-- CORRETA (azul-acinzentado) */
     margin: 0 0.5rem 0.5rem 0;
 }
 
@@ -172,7 +173,6 @@ body {
     font-weight: 400;
     font-size: 15px;
     color: $primary;
-    margin-left: -50px;
 }
 
 @keyframes pulse {
@@ -222,7 +222,6 @@ body {
         }
     }
 
-    /* ESTILO PARA O NOVO LINK "VER TODOS" */
     .search-see-all {
         display: block;
         padding: 0.75rem 1rem;
