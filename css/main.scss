@@ -1,62 +1,208 @@
 ---
 # Front matter vazio é necessário para o Jekyll processar o arquivo
 ---
+
 @import "../scss/variables";
 @import "bootstrap/scss/bootstrap";
 
-html { scroll-behavior: smooth; }
-body { background-color: $body-bg; }
-
-.section-title, .page-title { font-family: $font-family-sans-serif; font-size: 19.2px; font-weight: 400; color: $dark; }
-
-.card {
-  border: none; background-color: transparent;
-  .card-body { padding-left: 0; padding-right: 0; }
-  .card-title { font-family: $font-family-mono; font-weight: 700; font-size: 15px; color: $primary; }
-  .card-text small { font-family: $font-family-mono; font-weight: 400; font-size: 15px; color: $primary; }
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background-color: $body-bg;
 }
 
-.category-badge { display: inline-block; padding: 0.35em 0.65em; font-size: .75em; font-weight: 400; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: .25rem; background-color: $primary; text-decoration: none; font-family: $font-family-sans-serif; }
-.archive-tag { display: inline-block; padding: 0.35em 0.65em; font-size: .75em; font-weight: 400; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: .25rem; background-color: $muted-blue; text-decoration: none; font-family: $font-family-sans-serif; }
-.award-tag { display: inline-block; padding: 0.35em 0.65em; font-size: .75em; font-weight: 700; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: .25rem; background-color: $premium; text-decoration: none; font-family: $font-family-sans-serif; }
+.section-title,
+.page-title {
+    font-family: $font-family-sans-serif;
+    font-size: 19.2px;
+    font-weight: 400;
+    color: $dark;
+}
+
+.card {
+    border: none;
+    background-color: transparent;
+    .card-body {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .card-title {
+        font-family: $font-family-mono;
+        font-weight: 700;
+        font-size: 15px;
+        color: $primary;
+    }
+    .card-text small {
+        font-family: $font-family-mono;
+        font-weight: 400;
+        font-size: 15px;
+        color: $primary;
+    }
+}
+
+.category-badge {
+    display: inline-block;
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+    font-weight: 400;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    background-color: $primary;
+    text-decoration: none;
+    font-family: $font-family-sans-serif;
+}
+.archive-tag {
+    display: inline-block;
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+    font-weight: 400;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    background-color: $muted-blue;
+    text-decoration: none;
+    font-family: $font-family-sans-serif;
+}
+.award-tag {
+    display: inline-block;
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    background-color: $premium;
+    text-decoration: none;
+    font-family: $font-family-sans-serif;
+}
 
 /* ESTILOS DA NUVEM DE TAGS (RESTAURADOS) */
 .tag-cloud {
-  text-align: center;
-  line-height: 2.2;
+    text-align: left; /* ALTERADO DE 'center' PARA 'left' */
+    line-height: 2.2;
 }
 
 .tag-link {
-  display: inline-block;
-  text-decoration: none;
-  color: $muted-blue;
-  margin: 0 0.5rem 0.5rem 0.5rem;
+    display: inline-block;
+    text-decoration: none;
+    color: $muted-blue;
+    margin: 0 0.5rem 0.5rem 0; /* Removida a margem esquerda para alinhar */
 }
 
-.site-header .logo-link { flex-direction: column; align-items: flex-start !important; line-height: 0.9; }
-.site-header .logo-projeto { font-family: $font-family-sans-serif; font-size: 12px; font-weight: 400; color: $dark; }
-.site-header .logo-tipografar { font-family: $font-family-serif; font-size: 27px; font-weight: 400; color: $dark; }
-.site-header .search-wrapper { width: 400px; }
-.site-header .form-control { height: 40px; font-size: 1rem; border-radius: 20px; border: 1px solid $dark; padding-left: 1.5rem; }
-.site-header .search-btn { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: none; padding: 0; background: none; }
-.site-header .search-btn svg { width: 20px; height: 20px; fill: $dark; }
+.site-header .logo-link {
+    flex-direction: column;
+    align-items: flex-start !important;
+    line-height: 0.9;
+}
+.site-header .logo-projeto {
+    font-family: $font-family-sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: $dark;
+}
+.site-header .logo-tipografar {
+    font-family: $font-family-serif;
+    font-size: 27px;
+    font-weight: 400;
+    color: $dark;
+}
+.site-header .search-wrapper {
+    width: 400px;
+}
+.site-header .form-control {
+    height: 40px;
+    font-size: 1rem;
+    border-radius: 20px;
+    border: 1px solid $dark;
+    padding-left: 1.5rem;
+}
+.site-header .search-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    padding: 0;
+    background: none;
+}
+.site-header .search-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: $dark;
+}
 .site-header .search-wrapper:focus-within {
-  .form-control { border-color: $primary; box-shadow: 0 0 0 0.25rem rgba($primary, 0.25); }
-  .search-btn svg { fill: $primary; }
+    .form-control {
+        border-color: $primary;
+        box-shadow: 0 0 0 0.25rem rgba($primary, 0.25);
+    }
+    .search-btn svg {
+        fill: $primary;
+    }
 }
 
-.main-feature-title { font-family: $font-family-serif; font-size: 80px; font-weight: 400; line-height: 1.1; color: $dark; position: relative; z-index: 2; }
-.main-feature-image-wrapper { text-decoration: none; }
-.main-feature-image { margin-left: -50px; position: relative; z-index: 1; border-radius: 0.25rem; }
-.main-feature-author { font-family: $font-family-mono; font-weight: 400; font-size: 15px; color: $primary; margin-left: -50px; }
+.main-feature-title {
+    font-family: $font-family-serif;
+    font-size: 80px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: $dark;
+    position: relative;
+    z-index: 2;
+}
+.main-feature-image-wrapper {
+    text-decoration: none;
+}
+.main-feature-image {
+    margin-left: -50px;
+    position: relative;
+    z-index: 1;
+    border-radius: 0.25rem;
+}
+.main-feature-author {
+    font-family: $font-family-mono;
+    font-weight: 400;
+    font-size: 15px;
+    color: $primary;
+    margin-left: -50px;
+}
 
-@keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 0.9; } }
-.skeleton { background-color: rgba(255, 255, 255, 0.8); border-radius: 0.25rem; animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.9;
+    }
+}
+.skeleton {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 0.25rem;
+    animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
 
 #search-results {
-  .list-group-item {
-    background-color: $light; border-color: rgba($dark, 0.1);
-    a { color: $dark; font-weight: bold; text-decoration: none; }
-    small { color: $muted-blue; }
-  }
+    .list-group-item {
+        background-color: $light;
+        border-color: rgba($dark, 0.1);
+        a {
+            color: $dark;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        small {
+            color: $muted-blue;
+        }
+    }
 }
