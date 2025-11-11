@@ -14,24 +14,27 @@ layout: default
       
       {% assign found = false %}
 
+      {% comment %} 
+        Esta é a lógica de filtragem correta, que isola
+        cada tipo de página (category, tag, semestre)
+        e previne que os filtros se misturem.
+      {% endcomment %}
+      
       {% if item_type == 'category' %}
         {% for cat in projeto.categories %}
-          {% assign cat_down = cat | downcase %}
-          {% if cat_down == item_value %}
+          {% if cat | downcase == item_value %}
             {% assign found = true %}
           {% endif %}
         {% endfor %}
       
       {% elsif item_type == 'tag' %}
         {% for tag in projeto.tags %}
-          {% assign tag_down = tag | downcase %}
-          {% if tag_down == item_value %}
+          {% if tag | downcase == item_value %}
             {% assign found = true %}
           {% endif %}
         {% endfor %}
 
       {% elsif item_type == 'semestre' %}
-        {% comment %} A MUDANÇA ESTÁ AQUI: Compara o semestre do projeto com o título da página {% endcomment %}
         {% if projeto.semestre | downcase == item_value %}
            {% assign found = true %}
         {% endif %}
