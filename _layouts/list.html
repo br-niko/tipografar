@@ -2,60 +2,94 @@
 layout: default
 ---
 
-<div class="list-page">
-  
-  <h1 class="page-title mb-4">{{ page.title }}</h1>
+<div
+    class="list-page"
+    style="
+        font-family: monospace;
+        background-color: #f8f8f8;
+        padding: 1rem;
+        border: 1px solid #ddd;
+    "
+>
+    <h1 class="page-title" style="font-family: Archivo, sans-serif">
+        Diagnóstico da Página: {{ page.title }}
+    </h1>
 
-  <div class="row">
-    {% assign item_type = page.type %}
-    {% assign item_value = page.title | downcase %}
+    <hr style="margin: 2rem 0" />
 
-    {% for projeto in site.posts %}
-      
-      {% assign found = false %}
+    <h3>1. Informações da Página de Filtro:</h3>
+    <ul>
+        <li>
+            <strong>Tipo de Página (page.type):</strong>
+            <code>{{ page.type | inspect }}</code>
+        </li>
+        <li>
+            <strong>Valor do Filtro (page.title):</strong>
+            <code>{{ page.title | inspect }}</code>
+        </li>
+        <li>
+            <strong>Valor do Filtro (em minúsculas):</strong>
+            <code>{{ page.title | downcase | inspect }}</code>
+        </li>
+    </ul>
 
-      {% comment %} 
-        Esta é a lógica de filtragem correta, que isola
-        cada tipo de página (category, tag, semestre)
-        e previne que os filtros se misturem.
-      {% endcomment %}
-      
-      {% if item_type == 'category' %}
-        {% for cat in projeto.categories %}
-          {% if cat | downcase == item_value %}
-            {% assign found = true %}
-          {% endif %}
-        {% endfor %}
-      
-      {% elsif item_type == 'tag' %}
-        {% for tag in projeto.tags %}
-          {% if tag | downcase == item_value %}
-            {% assign found = true %}
-          {% endif %}
-        {% endfor %}
+    <hr style="margin: 2rem 0" />
 
-      {% elsif item_type == 'semestre' %}
-        {% if projeto.semestre | downcase == item_value %}
-           {% assign found = true %}
+    <h3>2. Verificando TODOS os Projetos:</h3>
+
+    {% assign item_type = page.type %} {% assign item_value = page.title |
+    downcase %} {% for projeto in site.posts %}
+
+    <div
+        style="
+            padding: 1rem;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-bottom: 1rem;
+        "
+    >
+        <h4>Analisando: {{ projeto.title }}</h4>
+
+        {% assign found = false %} {% if item_type == 'category' %} {% for cat
+        in projeto.categories %} {% assign cat_down = cat | downcase %}
+        <p>
+            Testando Categoria: <code>{{ cat_down }}</code> ==
+            <code>{{ item_value }}</code>? {% if cat_down == item_value %}
+            <strong style="color: green">VERDADEIRO</strong>
+            {% assign found = true %} {% else %}
+            <span style="color: gray">falso</span>
+            {% endif %}
+        </p>
+        {% endfor %} {% elsif item_type == 'tag' %} {% for tag in projeto.tags
+        %} {% assign tag_down = tag | downcase %}
+        <p>
+            Testando Tag: <code>{{ tag_down }}</code> ==
+            <code>{{ item_value }}</code>? {% if tag_down == item_value %}
+            <strong style="color: green">VERDADEIRO</strong>
+            {% assign found = true %} {% else %}
+            <span style="color: gray">falso</span>
+            {% endif %}
+        </p>
+        {% endfor %} {% elsif item_type == 'semestre' %}
+        <p>
+            Testando Semestre: <code>{{ projeto.semestre }}</code> ==
+            <code>{{ item_value }}</code>? {% if projeto.semestre == item_value
+            %}
+            <strong style="color: green">VERDADEIRO</strong>
+            {% assign found = true %} {% else %}
+            <span style="color: gray">falso</span>
+            {% endif %}
+        </p>
         {% endif %}
-      {% endif %}
 
-      
-      {% if found == true %}
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <div style="height: 200px; background-color: #eee;"></div>
-            <div class="card-body">
-              <h5 class="card-title">
-                <a href="{{ projeto.url }}" class="text-decoration-none">{{ projeto.title }}</a>
-              </h5>
-              <p class="card-text"><small>{{ projeto.aluno }}</small></p>
-            </div>
-          </div>
-        </div>
-      {% endif %}
+        <h5 style="margin-top: 1rem">
+            Resultado Final para este Projeto: {% if found == true %}
+            <strong style="color: green; font-size: 1.2rem">INCLUIR</strong>
+            {% else %}
+            <strong style="color: red; font-size: 1.2rem">IGNORAR</strong>
+            {% endif %}
+        </h5>
+    </div>
 
     {% endfor %}
-  </div>
-
 </div>
