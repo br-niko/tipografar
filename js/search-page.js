@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (projectResults.length > 0) {
       projectResults.forEach(result => {
         const doc = projectData[result.ref];
+        // GARANTA QUE ESTA CRASE (`) ESTEJA AQUI
         projectHTML += `
           <div class="col-md-4 mb-4">
             <div class="card h-100">
@@ -65,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p class="card-text"><small>${doc.aluno}</small></p>
               </div>
             </div>
-          </div>`;
+          </div>`; // <-- E GARANTA QUE ESTA CRASE (`) ESTEJA AQUI
       });
     } else {
       projectHTML = '<p class="col-12">Nenhum projeto encontrado.</p>';
@@ -77,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (taxonomyResults.length > 0) {
       taxonomyResults.forEach(result => {
         const doc = taxonomyData[result.ref];
-        // Reusa as classes de badge que já criamos
         const badgeClass = (doc.type === 'Categoria') ? 'category-badge' : 'archive-tag';
         taxonomyHTML += `<a href="${doc.url}" class="${badgeClass} me-2 mb-2">${doc.name}</a> `;
       });
