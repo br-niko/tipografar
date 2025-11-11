@@ -4,7 +4,7 @@
       "title": "Projeto de Tipografia Fictício 1",
       "aluno": "Aluno Nome Completo 1",
       "url": "/projetos/ProjetoFicticio1/",
-      "tags": "experimental, capa de livro, premiado",
+      "tags": "experimental, capa de livro, 🏆 premiado",
       "content": "Este é o subtítulo do projeto 1Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere."
     }
     ,

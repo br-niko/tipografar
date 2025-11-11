@@ -7,7 +7,7 @@ categories: ["design de tipos"]
 tags:
   - "experimental"
   - "capa de livro"
-  - "premiado"
+  - "🏆 premiado"
 premio: "🏆 Bienal de Design Gráfico"
 featured: true
 imagem_capa: "/assets/img/placeholder.jpg"
