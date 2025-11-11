@@ -3,25 +3,25 @@ layout: default
 ---
 
 <div class="list-page">
-    {% comment %} PASSO 1: Lógica 'Universal' para encontrar o título. Se a
-    página tiver um 'list_title' (como as de semestre), use-o. Senão, use o
-    'page.title' (como as de tags/categorias). {% endcomment %} {% if
-    page.list_title %} {% assign page_value = page.list_title %} {% else %} {%
-    assign page_value = page.title %} {% endif %}
+    {% comment %} PASSO 1: Lógica 'Universal' para encontrar o título. {%
+    endcomment %} {% if page.list_title %} {% assign page_value =
+    page.list_title %} {% else %} {% assign page_value = page.title %} {% endif
+    %}
 
     <h1 class="page-title mb-4">{{ page_value }}</h1>
 
     <div class="row">
         {% assign item_type = page.type %} {% assign item_value = page_value |
         downcase %} {% for projeto in site.posts %} {% assign found = false %}
+        {% comment %} ESTA É A LÓGICA CORRETA. 'elsif' garante que se a página é
+        'tag', ela SÓ vai checar as tags, e não as categorias. {% endcomment %}
         {% if item_type == 'category' %} {% for cat in projeto.categories %} {%
         if cat | downcase == item_value %} {% assign found = true %} {% endif %}
         {% endfor %} {% elsif item_type == 'tag' %} {% for tag in projeto.tags
         %} {% if tag | downcase == item_value %} {% assign found = true %} {%
-        endif %} {% endfor %} {% elsif item_type == 'semestre' %} {% comment %}
-        PASSO 2: Comparamos 'projeto.semestre' com o 'page_value' correto. {%
-        endcomment %} {% if projeto.semestre | downcase == item_value %} {%
-        assign found = true %} {% endif %} {% endif %} {% if found == true %}
+        endif %} {% endfor %} {% elsif item_type == 'semestre' %} {% if
+        projeto.semestre | downcase == item_value %} {% assign found = true %}
+        {% endif %} {% endif %} {% if found == true %}
         <div class="col-md-4 mb-4">
             <div class="card h-100">
                 <div style="height: 200px; background-color: #eee"></div>
