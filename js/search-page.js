@@ -4,24 +4,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const taxonomyList = document.getElementById("full-taxonomy-results-list");
   const queryDisplay = document.getElementById("search-query-display");
 
-  // Se não estamos na página de busca, não faz nada
   if (!projectList || !taxonomyList || !queryDisplay) {
     return;
   }
 
-  // 1. Pegar o termo da URL (ex: /busca/?q=lettering)
   const urlParams = new URLSearchParams(window.location.search);
   const query = urlParams.get("q");
   queryDisplay.textContent = query || "";
 
   if (!query) {
-    // A CORREÇÃO ESTÁ AQUI: aspas simples '...' por dentro
     projectList.innerHTML =
       '<p class="col-12">Por favor, digite um termo na busca.</p>';
     return;
   }
 
-  // 2. Inicializar os índices (copiado de search.js)
   let projectIdx, taxonomyIdx, projectData, taxonomyData;
 
   const loadProjects = fetch("/search.json")
@@ -34,10 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
         this.ref("id");
         this.field("title", { boost: 10 });
         this.field("aluno");
-      });
-      data.forEach((doc, idx) => {
-        doc.id = idx;
-        this.add(doc);
+
+        // A CORREÇÃO ESTÁ AQUI: O loop foi movido para DENTRO
+        data.forEach((doc, idx) => {
+          doc.id = idx;
+          this.add(doc);
+        });
       });
     });
 
@@ -50,10 +48,12 @@ document.addEventListener("DOMContentLoaded", () => {
         this.pipeline.remove(lunr.stopWordFilter);
         this.ref("id");
         this.field("name", { boost: 5 });
-      });
-      data.forEach((doc, idx) => {
-        doc.id = idx;
-        this.add(doc);
+
+        // A CORREÇÃO ESTÁ AQUI: O loop foi movido para DENTRO
+        data.forEach((doc, idx) => {
+          doc.id = idx;
+          this.add(doc);
+        });
       });
     });
 
