@@ -13,15 +13,16 @@ layout: default
     <div class="row">
         {% assign item_type = page.type %} {% assign item_value = page_value |
         downcase %} {% for projeto in site.posts %} {% assign found = false %}
+        {% comment %} ESTA É A LÓGICA CORRETA. 'elsif' garante que se a página é
+        'tag', ela SÓ vai checar as tags, e não as categorias. {% endcomment %}
         {% if item_type == 'category' %} {% for cat in projeto.categories %} {%
         assign cat_down = cat | downcase %} {% if cat_down == item_value %} {%
         assign found = true %} {% endif %} {% endfor %} {% elsif item_type ==
         'tag' %} {% for tag in projeto.tags %} {% assign tag_down = tag |
         downcase %} {% if tag_down == item_value %} {% assign found = true %} {%
-        endif %} {% endfor %} {% elsif item_type == 'semestre' %} {% assign
-        semestre_down = projeto.semestre | downcase %} {% if semestre_down ==
-        item_value %} {% assign found = true %} {% endif %} {% endif %} {% if
-        found == true %}
+        endif %} {% endfor %} {% elsif item_type == 'semestre' %} {% if
+        projeto.semestre | downcase == item_value %} {% assign found = true %}
+        {% endif %} {% endif %} {% if found == true %}
         <div class="col-md-4 mb-4">
             <div class="card h-100">
                 <div style="height: 200px; background-color: #eee"></div>
