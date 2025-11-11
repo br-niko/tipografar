@@ -1,53 +1,93 @@
 (function () {
-  function initLunr() {
-    fetch("/search.json")
-      .then((response) => response.json())
-      .then((data) => {
-        window.searchData = data;
-        window.lunrIdx = lunr(function () {
-          this.ref("id");
-          this.field("title", { boost: 10 });
-          this.field("aluno");
-          this.field("tags");
-          // A linha this.field('content') foi REMOVIDA
+  // Duas variáveis para nossos índices
+  let projectIdx = null;
+  let taxonomyIdx = null;
+  let projectData = [];
+  let taxonomyData = [];
 
-          data.forEach(function (doc, idx) {
-            doc.id = idx;
-            this.add(doc);
-          }, this);
+  // 1. Carregar o índice de PROJETOS (títulos, alunos)
+  fetch("/search.json")
+    .then((response) => response.json())
+    .then((data) => {
+      projectData = data;
+      projectIdx = lunr(function () {
+        this.ref("id");
+        this.field("title", { boost: 10 });
+        this.field("aluno");
+        data.forEach((doc, idx) => {
+          doc.id = idx;
+          this.add(doc);
         });
-      })
-      .catch((error) =>
-        console.error("Erro ao carregar o search.json:", error),
-      );
-  }
+      });
+    })
+    .catch((err) => console.error("Erro ao carregar search.json:", err));
+
+  // 2. Carregar o índice de TAXONOMIAS (tags, categories)
+  fetch("/taxonomies.json")
+    .then((response) => response.json())
+    .then((data) => {
+      taxonomyData = data;
+      taxonomyIdx = lunr(function () {
+        this.ref("id");
+        this.field("name", { boost: 5 });
+        data.forEach((doc, idx) => {
+          doc.id = idx;
+          this.add(doc);
+        });
+      });
+    })
+    .catch((err) => console.error("Erro ao carregar taxonomies.json:", err));
+
+  // 3. Função de busca (agora busca em DOIS índices)
   function showSearchResults() {
     const query = this.value;
     const resultsContainer = document.getElementById("search-results");
-    if (!query || query.length < 2 || !window.lunrIdx) {
+
+    if (!query || query.length < 2 || !projectIdx || !taxonomyIdx) {
       resultsContainer.innerHTML = "";
       resultsContainer.style.display = "none";
       return;
     }
-    const results = window.lunrIdx.search(query + "* " + query);
-    let output = '<ul class="list-group">';
-    const uniqueResults = results.filter(
-      (result, index, self) =>
-        index === self.findIndex((t) => t.ref === result.ref),
-    );
-    if (uniqueResults.length === 0) {
-      output += '<li class="list-group-item">Nenhum resultado encontrado.</li>';
-    } else {
-      uniqueResults.slice(0, 5).forEach(function (result) {
-        const doc = window.searchData[result.ref];
+
+    const searchQuery = query + "* " + query;
+    const projectResults = projectIdx.search(searchQuery);
+    const taxonomyResults = taxonomyIdx.search(searchQuery);
+
+    let output = "";
+
+    // Seção de Projetos
+    if (projectResults.length > 0) {
+      output += '<div class="search-result-header">Projetos</div>';
+      // list-group-flush remove as bordas/linhas
+      output += '<ul class="list-group list-group-flush">';
+      projectResults.slice(0, 3).forEach((result) => {
+        const doc = projectData[result.ref];
         output += `<li class="list-group-item"><a href="${doc.url}">${doc.title}</a><br><small>${doc.aluno}</small></li>`;
       });
+      output += "</ul>";
     }
-    output += "</ul>";
+
+    // Seção de Categorias e Tags
+    if (taxonomyResults.length > 0) {
+      output += '<div class="search-result-header">Categorias e Tags</div>';
+      output += '<ul class="list-group list-group-flush">';
+      taxonomyResults.slice(0, 3).forEach((result) => {
+        const doc = taxonomyData[result.ref];
+        output += `<li class="list-group-item"><a href="${doc.url}">${doc.name} <span class="search-result-type">(${doc.type})</span></a></li>`;
+      });
+      output += "</ul>";
+    }
+
+    if (output === "") {
+      output =
+        '<ul class="list-group list-group-flush"><li class="list-group-item">Nenhum resultado encontrado.</li></ul>';
+    }
+
     resultsContainer.innerHTML = output;
     resultsContainer.style.display = "block";
   }
-  initLunr();
+
+  // Ligar o listener
   const searchInput = document.getElementById("search-input");
   if (searchInput) {
     searchInput.addEventListener("keyup", showSearchResults);

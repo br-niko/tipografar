@@ -1,0 +1,33 @@
+---
+layout: null
+---
+{% comment %}
+  Este arquivo cria um "cardápio" de todas as Categorias e Tags
+  para o nosso segundo índice de busca.
+{% endcomment %}
+{% assign all_categories = site.posts | map: "categories" | compact | uniq %}
+{% assign all_tags_raw = "" | split: "" %}
+{% for post in site.posts %}{% assign all_tags_raw = all_tags_raw | concat: post.tags %}{% endfor %}
+{% assign all_tags = all_tags_raw | uniq | sort %}
+
+[
+  {% for cat in all_categories %}
+    {
+      "name": "{{ cat | escape }}",
+      "type": "Categoria",
+      "url": "/categorias/{{ cat | slugify }}/"
+    }
+    {% unless forloop.last and all_tags.size == 0 %},{% endunless %}
+  {% endfor %}
+
+  {% for tag in all_tags %}
+    {% if tag != "" %}
+    {
+      "name": "{{ tag | escape }}",
+      "type": "Tag",
+      "url": "/tags/{{ tag | slugify }}/"
+    }
+    {% unless forloop.last %},{% endunless %}
+    {% endif %}
+  {% endfor %}
+]

@@ -6,8 +6,7 @@ layout: null
     {
       "title": "{{ projeto.title | escape }}",
       "aluno": "{{ projeto.aluno | escape }}",
-      "url": "{{ projeto.url | relative_url }}",
-      "tags": "{{ projeto.tags | join: ', ' }}"
+      "url": "{{ projeto.url | relative_url }}"
     }
     {% unless forloop.last %},{% endunless %}
   {% endfor %}
