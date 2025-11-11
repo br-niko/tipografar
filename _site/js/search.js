@@ -1,54 +1,75 @@
-(function () {
-  function initLunr() {
-    fetch("/search.json")
-      .then((response) => response.json())
-      .then((data) => {
-        window.searchData = data;
-        window.lunrIdx = lunr(function () {
-          this.ref("id");
-          this.field("title", { boost: 10 });
-          this.field("aluno");
-          this.field("tags");
-          this.field("content");
-          data.forEach(function (doc, idx) {
-            doc.id = idx;
-            this.add(doc);
-          }, this);
-        });
-      })
-      .catch((error) =>
-        console.error("Erro ao carregar o search.json:", error),
-      );
-  }
-  function showSearchResults() {
-    const query = this.value;
-    const resultsContainer = document.getElementById("search-results");
-    if (!query || query.length < 2 || !window.lunrIdx) {
-      resultsContainer.innerHTML = "";
-      resultsContainer.style.display = "none";
-      return;
+[
+  
+    {
+      "title": "Projeto de Tipografia Fictício 1",
+      "aluno": "Aluno Nome Completo 1",
+      "url": "/projetos/ProjetoFicticio1/",
+      "tags": "experimental, capa de livro",
+      "content": "Este é o subtítulo do projeto 1Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere."
     }
-    const results = window.lunrIdx.search(query + "* " + query);
-    let output = '<ul class="list-group">';
-    const uniqueResults = results.filter(
-      (result, index, self) =>
-        index === self.findIndex((t) => t.ref === result.ref),
-    );
-    if (uniqueResults.length === 0) {
-      output += '<li class="list-group-item">Nenhum resultado encontrado.</li>';
-    } else {
-      uniqueResults.slice(0, 5).forEach(function (result) {
-        const doc = window.searchData[result.ref];
-        output += `<li class="list-group-item"><a href="${doc.url}">${doc.title}</a><br><small>${doc.aluno}</small></li>`;
-      });
+    ,
+  
+    {
+      "title": "Projeto de Tipografia 9",
+      "aluno": "Aluno Nome Completo 9",
+      "url": "/projetos/Projeto9/",
+      "tags": "caligrafia, experimental, capa de livro",
+      "content": "Subtítulo do projeto 4Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet."
     }
-    output += "</ul>";
-    resultsContainer.innerHTML = output;
-    resultsContainer.style.display = "block";
-  }
-  initLunr();
-  const searchInput = document.getElementById("search-input");
-  if (searchInput) {
-    searchInput.addEventListener("keyup", showSearchResults);
-  }
-})();
+    ,
+  
+    {
+      "title": "Projeto de Tipografia Fictício 4",
+      "aluno": "Aluno Nome Completo 12",
+      "url": "/projetos/Projeto12/",
+      "tags": "caligrafia, experimental, capa de livro, teste, tipografia",
+      "content": "Subtítulo do projeto 7Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet."
+    }
+    ,
+  
+    {
+      "title": "Projeto de Tipografia Fictício 4",
+      "aluno": "Aluno Nome Completo 4",
+      "url": "/projetos/Projeto4/",
+      "tags": "caligrafia, experimental, capa de livro",
+      "content": "Subtítulo do projeto 7Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet."
+    }
+    ,
+  
+    {
+      "title": "Projeto de Tipografia Fictício 2",
+      "aluno": "Aluno Nome Completo 2",
+      "url": "/projetos/ProjetoFicticio/",
+      "tags": "caligrafia, capa de livro",
+      "content": "Subtítulo do projeto 2Donec suscipit tincidunt purus non pulvinar. Nunc ut elit sed aut malesuada."
+    }
+    ,
+  
+    {
+      "title": "Projeto de Tipografia Fictício 5",
+      "aluno": "Aluno Nome Completo 5",
+      "url": "/projetos/Projeto5/",
+      "tags": "design generativo, pôster",
+      "content": "Subtítulo do projeto 6Mauris iaculis porttitor posuere. Praesent id metus massa, ut blandit odio. Proin quis tortor orci."
+    }
+    ,
+  
+    {
+      "title": "Projeto de Tipografia Fictício 3",
+      "aluno": "Aluno Nome Completo 3",
+      "url": "/projetos/Projeto-lettering/",
+      "tags": "design generativo, pôster",
+      "content": "Subtítulo do projeto 3Mauris iaculis porttitor posuere. Praesent id metus massa, ut blandit odio. Proin quis tortor orci."
+    }
+    ,
+  
+    {
+      "title": "Projeto de Tipografia Fictício 66",
+      "aluno": "Aluno Nome Completo 66",
+      "url": "/projetos/Projeto-Lettering/",
+      "tags": "capa de disco, pôster",
+      "content": "Subtítulo do projeto 66Mauris iaculis porttitor posuere. Praesent id metus massa, ut blandit odio. Proin quis tortor orci."
+    }
+    
+  
+]
