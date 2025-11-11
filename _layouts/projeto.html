@@ -1,27 +1,24 @@
 ---
 layout: default
 ---
-
 <article class="project-page">
-    <header class="project-header mb-4">
-        <h1 class="page-title">{{ page.title }}</h1>
-        <p class="project-author">por {{ page.aluno }}</p>
-        <div class="project-meta d-flex align-items-center">
-            <a
-                href="/categorias/{{ page.categories | first | slugify }}/"
-                class="category-badge me-2 mb-2"
-                >{{ page.categories | first }}</a
-            >
-            <a
-                href="/semestres/{{ page.semestre | replace: '/', '-' }}/"
-                class_original="archive-tag me-2 mb-2"
-                >{{ page.semestre }}</a
-            >
-            {% if page.premio and page.premio != "" %}
-            <span class="award-tag me-2 mb-2">{{ page.premio }}</span>
-            {% endif %}
-        </div>
-    </header>
-    <hr class="mb-4" />
-    <div class="project-content">{{ content }}</div>
+  <header class="project-header mb-4">
+    <h1 class="page-title">{{ page.title }}</h1>
+    <p class="project-author">por {{ page.aluno }}</p>
+    <div class="project-meta d-flex align-items-center">
+      <a href="/categorias/{{ page.categories | first | slugify }}/" class="category-badge me-2 mb-2">{{ page.categories | first }}</a>
+      
+      {% comment %} A MUDANÇA ESTÁ AQUI: O href agora é dinâmico {% endcomment %}
+      {% assign semestre_slug = page.semestre | replace: "/", "-" %}
+      <a href="/semestres/{{ semestre_slug }}/" class="archive-tag me-2 mb-2">{{ page.semestre }}</a>
+      
+      {% if page.premio and page.premio != "" %}
+        <span class="award-tag me-2 mb-2">{{ page.premio }}</span>
+      {% endif %}
+    </div>
+  </header>
+  <hr class="mb-4">
+  <div class="project-content">
+    {{ content }}
+  </div>
 </article>

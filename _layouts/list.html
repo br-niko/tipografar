@@ -14,10 +14,6 @@ layout: default
       
       {% assign found = false %}
 
-      {% comment %} 
-        Esta é a lógica de filtragem correta, que agora 
-        sabemos que funciona.
-      {% endcomment %}
       {% if item_type == 'category' %}
         {% for cat in projeto.categories %}
           {% assign cat_down = cat | downcase %}
@@ -35,15 +31,13 @@ layout: default
         {% endfor %}
 
       {% elsif item_type == 'semestre' %}
-        {% if projeto.semestre == item_value %}
+        {% comment %} A MUDANÇA ESTÁ AQUI: Compara o semestre do projeto com o título da página {% endcomment %}
+        {% if projeto.semestre | downcase == item_value %}
            {% assign found = true %}
         {% endif %}
       {% endif %}
 
       
-      {% comment %} 
-        Se 'found' for verdadeiro, o card é exibido.
-      {% endcomment %}
       {% if found == true %}
         <div class="col-md-4 mb-4">
           <div class="card h-100">
