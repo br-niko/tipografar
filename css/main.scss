@@ -118,16 +118,13 @@ body {
 .site-header .search-wrapper {
     width: 400px;
 }
-
-/* ESTILOS DA BARRA DE BUSCA ATUALIZADOS */
 .site-header .form-control {
     height: 40px;
     font-size: 1rem;
-    border-radius: 0.25rem; /* <-- CANTOS MAIS QUADRADOS */
+    border-radius: 0.25rem;
     border: 1px solid $dark;
     padding-left: 1.5rem;
 }
-
 .site-header .search-btn {
     position: absolute;
     right: 10px;
@@ -193,9 +190,8 @@ body {
     animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* ESTILOS DA LISTA DE BUSCA ATUALIZADOS */
 #search-results {
-    background-color: $white; /* <-- FUNDO BRANCO */
+    background-color: $white;
     border: 1px solid rgba($dark, 0.1);
     border-radius: 0.25rem;
     margin-top: 0.25rem;
@@ -212,7 +208,7 @@ body {
     }
 
     .list-group-item {
-        background-color: transparent; /* Remove o fundo $light */
+        background-color: transparent;
         a {
             color: $dark;
             font-weight: bold;
@@ -223,6 +219,24 @@ body {
         }
         .search-result-type {
             color: $muted-blue;
+        }
+    }
+
+    /* ESTILO PARA O NOVO LINK "VER TODOS" */
+    .search-see-all {
+        display: block;
+        padding: 0.75rem 1rem;
+        font-family: $font-family-sans-serif;
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: $primary;
+        text-decoration: none;
+        background-color: $light;
+        border-top: 1px solid rgba($dark, 0.1);
+
+        &:hover {
+            background-color: darken($light, 2%);
+            text-decoration: underline;
         }
     }
 }
