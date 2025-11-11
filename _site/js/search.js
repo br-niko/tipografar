@@ -11,6 +11,13 @@
     .then((data) => {
       projectData = data;
       projectIdx = lunr(function () {
+        // --- A CORREÇÃO ESTÁ AQUI ---
+        // Diz ao Lunr para PARAR de cortar palavras (ex: "lettering" -> "letter")
+        // Isso torna a busca de autocompletar muito melhor.
+        this.pipeline.remove(lunr.stemmer);
+        this.pipeline.remove(lunr.stopWordFilter);
+        // -----------------------------
+
         this.ref("id");
         this.field("title", { boost: 10 });
         this.field("aluno");
@@ -28,6 +35,11 @@
     .then((data) => {
       taxonomyData = data;
       taxonomyIdx = lunr(function () {
+        // --- A CORREÇÃO ESTÁ AQUI TAMBÉM ---
+        this.pipeline.remove(lunr.stemmer);
+        this.pipeline.remove(lunr.stopWordFilter);
+        // ------------------------------------
+
         this.ref("id");
         this.field("name", { boost: 5 });
         data.forEach((doc, idx) => {
@@ -49,7 +61,8 @@
       return;
     }
 
-    const searchQuery = query + "* " + query;
+    // Agora, uma simples busca com '*' funciona perfeitamente
+    const searchQuery = query + "*";
     const projectResults = projectIdx.search(searchQuery);
     const taxonomyResults = taxonomyIdx.search(searchQuery);
 
@@ -58,7 +71,6 @@
     // Seção de Projetos
     if (projectResults.length > 0) {
       output += '<div class="search-result-header">Projetos</div>';
-      // list-group-flush remove as bordas/linhas
       output += '<ul class="list-group list-group-flush">';
       projectResults.slice(0, 3).forEach((result) => {
         const doc = projectData[result.ref];
