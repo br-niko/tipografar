@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<div class="about-page">
+  <header class="project-header mb-4">
+    <h1 class="page-title">{{ page.title }}</h1>
+    <p class="project-author">por Professor</p>
+  </header>
+
+  <hr class="mb-5">
+
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      {% comment %} O placeholder da imagem agora mora aqui, no layout {% endcomment %}
+      <div style="height: 300px; background-color: #eee; margin-bottom: 2rem;"></div>
+
+      <div class="page-content">
+        {{ content }}
+      </div>
+    </div>
+  </div>
+</div>
