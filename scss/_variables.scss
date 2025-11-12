@@ -1,4 +1,4 @@
-// --- GUIA DE ESTILOS (v4.14 - Teste Nova Cor Categoria) ---
+// --- GUIA DE ESTILOS (v4.15 - Teste Fundo Pergaminho) ---
 
 // 1. FONTES
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Chivo+Mono:wght@400;700&family=Gloock&display=swap');
@@ -11,12 +11,12 @@ $font-family-mono: 'Chivo Mono', monospace;
 // 2. CORES
 $white:    #fff;
 $black:    #000;
-$light:    #E8E9ED; // Fundo "gelo"
+$light:    #f4f1de; // <-- MUDANÇA ESTÁ AQUI
 $dark:     #22253C;
 $primary:  #dc3545; // Vermelho (Links)
 $premium:  #7208FC; // Roxo (Prêmio)
 $muted-blue: #4A5A98; // Azul-Acinzentado (Semestre)
-$category-blue: #2A49C7; // <-- MUDANÇA ESTÁ AQUI
+$category-blue: #2A49C7; // Azul Categoria
 
 // 3. SOBRESCREVENDO VARIÁVEIS DO BOOTSTRAP
 $body-bg: $light;
