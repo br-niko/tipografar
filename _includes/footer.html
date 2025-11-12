@@ -11,9 +11,8 @@
                     class="category-badge me-2 mb-2"
                     >{{ categoria }}</a
                 >
-                {% endfor %} {% comment %} O NOVO BOTÃO DE PRÊMIO ESTÁ AQUI: Ele
-                usa a classe 'award-tag' que já tem o estilo roxo. {% endcomment
-                %}
+                {% endfor %}
+
                 <a href="/premiados/" class="award-tag me-2 mb-2"
                     >🏆 premiados</a
                 >
@@ -32,16 +31,16 @@
         </div>
 
         <div>
-            <div class="tag-cloud">
+            <div classa="tag-cloud">
                 {% assign all_tags = "" | split: "" %}{% for post in site.posts
                 %}{% assign all_tags = all_tags | concat: post.tags %}{% endfor
                 %}{% assign tags = all_tags | uniq | sort %} {% for tag in tags
-                %} {% comment %} O FILTRO PARA REMOVER 'premiados' ESTÁ AQUI: {%
-                endcomment %} {% if tag != "" and tag != "premiados" %} {%
-                assign tag_count = 0 %}{% for project in site.posts %}{% if
-                project.tags contains tag %}{% assign tag_count = tag_count |
-                plus: 1 %}{% endif %}{% endfor %}{% assign font_size = tag_count
-                | times: 4 | plus: 12 %}<a
+                %} {% comment %} A MUDANÇA ESTÁ AQUI: Agora ele só continua se a
+                tag não for 'premiados'. {% endcomment %} {% if tag != "" and
+                tag != "premiados" %} {% assign tag_count = 0 %}{% for project
+                in site.posts %}{% if project.tags contains tag %}{% assign
+                tag_count = tag_count | plus: 1 %}{% endif %}{% endfor %}{%
+                assign font_size = tag_count | times: 4 | plus: 12 %}<a
                     href="/tags/{{ tag | slugify }}/"
                     class="tag-link"
                     style="font-size: {{ font_size }}px;"
