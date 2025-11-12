@@ -1,30 +1,27 @@
 ---
 layout: default
 ---
-
 <div class="archive-page">
-    <h1 class="page-title mb-4">{{ page.title }}</h1>
-    <p>Todos os projetos da disciplina, organizados por semestre.</p>
+  <h1 class="page-title mb-4">{{ page.title }}</h1>
+  <p>Todos os projetos da disciplina, organizados por semestre.</p>
 
-    {% assign posts_by_semester = site.posts | group_by: "semestre" | sort:
-    "name" | reverse %} {% for group in posts_by_semester %}
+  {% assign posts_by_semester = site.posts | group_by: "semestre" | sort: "name" | reverse %}
+
+  {% for group in posts_by_semester %}
     <h2 class="section-title mt-5 mb-3">{{ group.name }}</h2>
     <div class="row">
-        {% for projeto in group.items %}
+      {% for projeto in group.items %}
         <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div style="height: 200px; background-color: #eee"></div>
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <a href="{{ projeto.url }}" class="text-decoration-none"
-                            >{{ projeto.title }}</a
-                        >
-                    </h5>
-                    <p class="card-text"><small>{{ projeto.aluno }}</small></p>
-                </div>
+          <div class="card h-100">
+            <div style="height: 200px; background-color: #eee;"></div>
+            <div class="card-body">
+              <span class="category-outline-badge">{{ projeto.categories | first }}</span>
+              <h5 class="card-title"><a href="{{ projeto.url }}" class="text-decoration-none">{{ projeto.title }}</a></h5>
+              <p class="card-text"><small>{{ projeto.aluno }}</small></p>
             </div>
+          </div>
         </div>
-        {% endfor %}
+      {% endfor %}
     </div>
-    {% endfor %}
+  {% endfor %}
 </div>

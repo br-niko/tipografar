@@ -1,41 +1,37 @@
 ---
 layout: default
 ---
-
 <div class="list-page">
-    {% comment %} PASSO 1: Lógica 'Universal' para encontrar o título. {%
-    endcomment %} {% if page.list_title %} {% assign page_value =
-    page.list_title %} {% else %} {% assign page_value = page.title %} {% endif
-    %}
+  
+  <h1 class="page-title mb-4">{{ page.title }}</h1>
 
-    <h1 class="page-title mb-4">{{ page_value }}</h1>
+  <div class="row">
+    {% assign item_type = page.type %}
+    {% assign item_value = page.title | downcase %}
 
-    <div class="row">
-        {% assign item_type = page.type %} {% assign item_value = page_value |
-        downcase %} {% for projeto in site.posts %} {% assign found = false %}
-        {% comment %} Esta é a lógica de filtragem correta, que agora sabemos
-        que funciona. {% endcomment %} {% if item_type == 'category' %} {% for
-        cat in projeto.categories %} {% assign cat_down = cat | downcase %} {%
-        if cat_down == item_value %} {% assign found = true %} {% endif %} {%
-        endfor %} {% elsif item_type == 'tag' %} {% for tag in projeto.tags %}
-        {% assign tag_down = tag | downcase %} {% if tag_down == item_value %}
-        {% assign found = true %} {% endif %} {% endfor %} {% elsif item_type ==
-        'semestre' %} {% assign semestre_down = projeto.semestre | downcase %}
-        {% if semestre_down == item_value %} {% assign found = true %} {% endif
-        %} {% endif %} {% if found == true %}
+    {% for projeto in site.posts %}
+      {% assign found = false %}
+      {% if item_type == 'category' %}
+        {% for cat in projeto.categories %}{% assign cat_down = cat | downcase %}{% if cat_down == item_value %}{% assign found = true %}{% endif %}{% endfor %}
+      {% elsif item_type == 'tag' %}
+        {% for tag in projeto.tags %}{% assign tag_down = tag | downcase %}{% if tag_down == item_value %}{% assign found = true %}{% endif %}{% endfor %}
+      {% elsif item_type == 'semestre' %}
+        {% assign semestre_down = projeto.semestre | downcase %}{% if semestre_down == item_value %}{% assign found = true %}{% endif %}
+      {% endif %}
+
+      {% if found == true %}
         <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div style="height: 200px; background-color: #eee"></div>
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <a href="{{ projeto.url }}" class="text-decoration-none"
-                            >{{ projeto.title }}</a
-                        >
-                    </h5>
-                    <p class="card-text"><small>{{ projeto.aluno }}</small></p>
-                </div>
+          <div class="card h-100">
+            <div style="height: 200px; background-color: #eee;"></div>
+            <div class="card-body">
+              <span class="category-outline-badge">{{ projeto.categories | first }}</span>
+              <h5 class="card-title"><a href="{{ projeto.url }}" class="text-decoration-none">{{ projeto.title }}</a></h5>
+              <p class="card-text"><small>{{ projeto.aluno }}</small></p>
             </div>
+          </div>
         </div>
-        {% endif %} {% endfor %}
-    </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
 </div>

@@ -1,29 +1,25 @@
 ---
 layout: default
 ---
-
 <div class="featured-list-page">
-    <h1 class="page-title mb-4">{{ page.title }}</h1>
+  
+  <h1 class="page-title mb-4">{{ page.title }}</h1>
 
-    <div class="row">
-        {% comment %} Este loop é simples: ele varre todos os posts e mostra
-        APENAS os que têm 'featured: true'. {% endcomment %} {% for projeto in
-        site.posts %} {% if projeto.featured == true %}
-
+  <div class="row">
+    {% for projeto in site.posts %}
+      {% if projeto.featured == true %}
         <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div style="height: 200px; background-color: #eee"></div>
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <a href="{{ projeto.url }}" class="text-decoration-none"
-                            >{{ projeto.title }}</a
-                        >
-                    </h5>
-                    <p class="card-text"><small>{{ projeto.aluno }}</small></p>
-                </div>
+          <div class="card h-100">
+            <div style="height: 200px; background-color: #eee;"></div>
+            <div class="card-body">
+              <span class="category-outline-badge">{{ projeto.categories | first }}</span>
+              <h5 class="card-title"><a href="{{ projeto.url }}" class="text-decoration-none">{{ projeto.title }}</a></h5>
+              <p class="card-text"><small>{{ projeto.aluno }}</small></p>
             </div>
+          </div>
         </div>
+      {% endif %}
+    {% endfor %}
+  </div>
 
-        {% endif %} {% endfor %}
-    </div>
 </div>
