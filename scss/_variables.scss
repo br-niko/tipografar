@@ -1,4 +1,4 @@
-// --- GUIA DE ESTILOS (v4.10 - Ajuste Cor Categoria) ---
+// --- GUIA DE ESTILOS (v4.11 - Ajuste Final Cores) ---
 
 // 1. FONTES
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Chivo+Mono:wght@400;700&family=Gloock&display=swap");
@@ -15,8 +15,8 @@ $light: #e8e9ed; // Fundo "gelo"
 $dark: #22253c;
 $primary: #dc3545; // Vermelho (Links)
 $premium: #7208fc; // Roxo (Prêmio)
-$muted-blue: #5e699d; // Azul-Acinzentado (Semestre/Nuvem)
-$category-blue: #4a5a98; // <-- MUDANÇA ESTÁ AQUI
+$muted-blue: #4a5a98; // <-- MUDANÇA ESTÁ AQUI (para Semestre/Nuvem)
+$category-blue: #084dfc; // <-- MUDANÇA ESTÁ AQUI (de volta ao azul brilhante)
 
 // 3. SOBRESCREVENDO VARIÁVEIS DO BOOTSTRAP
 $body-bg: $light;
