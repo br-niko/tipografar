@@ -19,6 +19,9 @@ layout: default
     <h2 class="section-title">Destaques</h2>
     <a href="/destaques/" class="link-primary">ver todos →</a>
   </div>
+  
+  <hr class="section-divider">
+
   <div class="row">{% for projeto in site.posts %}{% if projeto.featured == true %}<div class="col-md-4 mb-4"><div class="card h-100"><div style="height: 200px; background-color: #eee;"></div>
     <div class="card-body">
       <div class="card-meta-badges">
@@ -29,9 +32,6 @@ layout: default
       <p class="card-text"><small>{{ projeto.aluno }}</small></p>
     </div>
   </div></div>{% endif %}{% endfor %}</div>
-  
-  <hr class="section-divider mt-4">
-
 </section>
 
 <section class="mb-5">
@@ -41,6 +41,9 @@ layout: default
     {% assign semestre_slug = latest_semester | replace: "/", "-" %}
     <a href="/semestres/{{ semestre_slug }}/" class="link-primary">ver todos →</a>
   </div>
+
+  <hr class="section-divider">
+
   <div class="row">{% for projeto in site.posts %}{% if projeto.semestre == latest_semester %}<div class="col-md-4 mb-4"><div class="card h-100"><div style="height: 200px; background-color: #eee;"></div>
     <div class="card-body">
       <div class="card-meta-badges">
@@ -51,8 +54,5 @@ layout: default
       <p class="card-text"><small>{{ projeto.aluno }}</small></p>
     </div>
   </div></div>{% endif %}{% endfor %}</div>
-
-  <hr class="section-divider mt-4">
-
   {% endif %}
 </section>
