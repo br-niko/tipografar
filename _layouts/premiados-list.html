@@ -1,25 +1,34 @@
 ---
 layout: default
 ---
-<div class="featured-list-page">
+
+<div class="premiados-list-page">
   
   <h1 class="page-title mb-4">{{ page.title }}</h1>
 
   <div class="row">
     {% for projeto in site.posts %}
+      
       {% if projeto.premio and projeto.premio != "" %}
         <div class="col-md-4 mb-4">
           <div class="card h-100">
             <div style="height: 200px; background-color: #eee;"></div>
             <div class="card-body">
-              
-              <span class="category-outline-badge">{{ projeto.categories | first }}</span>
-              
-              <h5 class="card-title"><a href="{{ projeto.url }}" class="text-decoration-none">{{ projeto.title }}</a></h5>
+
+              <div class="card-meta-badges">
+                {% comment %} A CATEGORIA E O PRÊMIO QUE FALTAVAM ESTÃO AQUI {% endcomment %}
+                <span class="category-outline-badge me-2 mb-2">{{ projeto.categories | first }}</span>
+                <span class="award-tag me-2 mb-2">{{ projeto.premio }}</span>
+              </div>
+
+              <h5 class="card-title">
+                <a href="{{ projeto.url }}" class="text-decoration-none">{{ projeto.title }}</a>
+              </h5>
               <p class="card-text"><small>{{ projeto.aluno }}</small></p>
             </div>
           </div>
         </div>
+        
       {% endif %}
     {% endfor %}
   </div>

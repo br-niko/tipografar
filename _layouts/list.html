@@ -23,11 +23,6 @@ layout: default
       
       {% assign found = false %}
 
-      {% comment %} 
-        ESTA É A LÓGICA CORRETA.
-        'elsif' garante que se a página é 'tag',
-        ela SÓ vai checar as tags, e não as categorias.
-      {% endcomment %}
       {% if item_type == 'category' %}
         {% for cat in projeto.categories %}
           {% assign cat_down = cat | downcase %}
@@ -57,7 +52,15 @@ layout: default
           <div class="card h-100">
             <div style="height: 200px; background-color: #eee;"></div>
             <div class="card-body">
-              <span class="category-outline-badge">{{ projeto.categories | first }}</span>
+              
+              <div class="card-meta-badges">
+                <span class="category-outline-badge me-2 mb-2">{{ projeto.categories | first }}</span>
+                {% comment %} A LÓGICA DO PRÊMIO QUE FALTAVA ESTÁ AQUI {% endcomment %}
+                {% if projeto.premio and projeto.premio != "" %}
+                  <span class="award-tag me-2 mb-2">{{ projeto.premio }}</span>
+                {% endif %}
+              </div>
+
               <h5 class="card-title">
                 <a href="{{ projeto.url }}" class="text-decoration-none">{{ projeto.title }}</a>
               </h5>
