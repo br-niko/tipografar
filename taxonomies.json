@@ -1,10 +1,6 @@
 ---
 layout: null
 ---
-{% comment %}
-  Este arquivo cria um "cardápio" de todas as Categorias e Tags
-  para o nosso segundo índice de busca.
-{% endcomment %}
 {% assign all_categories = site.posts | map: "categories" | compact | uniq %}
 {% assign all_tags_raw = "" | split: "" %}
 {% for post in site.posts %}{% assign all_tags_raw = all_tags_raw | concat: post.tags %}{% endfor %}
@@ -19,7 +15,7 @@ layout: null
     }
     {% unless forloop.last and all_tags.size == 0 %},{% endunless %}
   {% endfor %}
-
+  
   {% for tag in all_tags %}
     {% if tag != "" %}
     {
@@ -30,4 +26,15 @@ layout: null
     {% unless forloop.last %},{% endunless %}
     {% endif %}
   {% endfor %}
+  
+  {% comment %} 
+    A ADIÇÃO MANUAL ESTÁ AQUI.
+    Garante que "premiados" apareça na busca.
+  {% endcomment %}
+  {% if all_tags.size > 0 or all_categories.size > 0 %},{% endif %}
+  {
+    "name": "Premiados",
+    "type": "Arquivo",
+    "url": "/premiados/"
+  }
 ]
