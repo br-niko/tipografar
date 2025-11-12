@@ -1,4 +1,8 @@
-<footer class="py-5 mt-5 border-top" id="navegacao-tags">
+<footer
+    class="py-5 mt-5"
+    id="navegacao-tags"
+    style="border-top: 1px solid #ffffff"
+>
     <div class="container">
         <div class="mb-5">
             <h5 class="section-title">Arquivo</h5>
@@ -31,8 +35,8 @@
                 {% assign all_tags = "" | split: "" %}{% for post in site.posts
                 %}{% assign all_tags = all_tags | concat: post.tags %}{% endfor
                 %}{% assign tags = all_tags | uniq | sort %} {% for tag in tags
-                %} {% if tag != "" %} {% assign tag_count = 0 %}{% for project
-                in site.posts %}{% if project.tags contains tag %}{% assign
+                %}{% if tag != "" %}{% assign tag_count = 0 %}{% for project in
+                site.posts %}{% if project.tags contains tag %}{% assign
                 tag_count = tag_count | plus: 1 %}{% endif %}{% endfor %}{%
                 assign font_size = tag_count | times: 4 | plus: 12 %}<a
                     href="/tags/{{ tag | slugify }}/"
