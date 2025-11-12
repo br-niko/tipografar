@@ -59,12 +59,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (projectResults.length > 0) {
       projectResults.forEach(result => {
         const doc = projectData[result.ref];
+        
+        // Helper variable for the award badge
+        const awardBadge = (doc.premio && doc.premio !== "") 
+          ? `<span class="award-tag me-2 mb-2">${doc.premio}</span>` 
+          : '';
+
         projectHTML += `
           <div class="col-md-4 mb-4">
             <div class="card h-100">
               <div style="height: 200px; background-color: #eee;"></div>
               <div class="card-body">
-                <span class="category-outline-badge">${doc.categories}</span>
+                <div class="card-meta-badges">
+                  <span class="category-outline-badge me-2 mb-2">${doc.categories}</span>
+                  ${awardBadge}
+                </div>
                 <h5 class="card-title">
                   <a href="${doc.url}" class="text-decoration-none">${doc.title}</a>
                 </h5>

@@ -1,27 +1,27 @@
-// --- GUIA DE ESTILOS (v4.11 - Ajuste Final Cores) ---
+// --- GUIA DE ESTILOS (v4.12 - Novo Azul) ---
 
 // 1. FONTES
-@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Chivo+Mono:wght@400;700&family=Gloock&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Chivo+Mono:wght@400;700&family=Gloock&display=swap');
 
 // Define as famílias de fonte para o projeto
-$font-family-sans-serif: "Archivo", sans-serif;
-$font-family-serif: "Gloock", serif;
-$font-family-mono: "Chivo Mono", monospace;
+$font-family-sans-serif: 'Archivo', sans-serif;
+$font-family-serif: 'Gloock', serif;
+$font-family-mono: 'Chivo Mono', monospace;
 
 // 2. CORES
-$white: #fff;
-$black: #000;
-$light: #e8e9ed; // Fundo "gelo"
-$dark: #22253c;
-$primary: #dc3545; // Vermelho (Links)
-$premium: #7208fc; // Roxo (Prêmio)
-$muted-blue: #4a5a98; // <-- MUDANÇA ESTÁ AQUI (para Semestre/Nuvem)
-$category-blue: #084dfc; // <-- MUDANÇA ESTÁ AQUI (de volta ao azul brilhante)
+$white:    #fff;
+$black:    #000;
+$light:    #E8E9ED; // Fundo "gelo"
+$dark:     #22253C;
+$primary:  #dc3545; // Vermelho (Links)
+$premium:  #7208FC; // Roxo (Prêmio)
+$muted-blue: #4A5A98; // Azul-Acinzentado (Semestre)
+$category-blue: #5A6DB8; // <-- MUDANÇA ESTÁ AQUI
 
 // 3. SOBRESCREVENDO VARIÁVEIS DO BOOTSTRAP
 $body-bg: $light;
 $body-color: $dark;
-$link-color: $primary;
+$link-color: $primary; 
 $headings-font-family: $font-family-serif;
 $headings-color: $dark;
 
