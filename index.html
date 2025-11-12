@@ -13,8 +13,12 @@ layout: default
     </div>
   </div>
 </section>
+
 <section class="mb-5">
-  <div class="d-flex justify-content-between align-items-center mb-3"><h2 class="section-title">Destaques</h2><a href="/destaques/" class="link-primary">ver todos →</a></div>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="section-title">Destaques</h2>
+    <a href="/destaques/" class="link-primary">ver todos →</a>
+  </div>
   <div class="row">{% for projeto in site.posts %}{% if projeto.featured == true %}<div class="col-md-4 mb-4"><div class="card h-100"><div style="height: 200px; background-color: #eee;"></div>
     <div class="card-body">
       <div class="card-meta-badges">
@@ -25,10 +29,18 @@ layout: default
       <p class="card-text"><small>{{ projeto.aluno }}</small></p>
     </div>
   </div></div>{% endif %}{% endfor %}</div>
+  
+  <hr class="section-divider mt-4">
+
 </section>
+
 <section class="mb-5">
   {% assign latest_semester = site.posts | map: "semestre" | compact | uniq | sort | last %}{% if latest_semester %}
-  <div class="d-flex justify-content-between align-items-center mb-3"><h2 class="section-title">{{ latest_semester }}</h2>{% assign semestre_slug = latest_semester | replace: "/", "-" %}<a href="/semestres/{{ semestre_slug }}/" class="link-primary">ver todos →</a></div>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="section-title">{{ latest_semester }}</h2>
+    {% assign semestre_slug = latest_semester | replace: "/", "-" %}
+    <a href="/semestres/{{ semestre_slug }}/" class="link-primary">ver todos →</a>
+  </div>
   <div class="row">{% for projeto in site.posts %}{% if projeto.semestre == latest_semester %}<div class="col-md-4 mb-4"><div class="card h-100"><div style="height: 200px; background-color: #eee;"></div>
     <div class="card-body">
       <div class="card-meta-badges">
@@ -39,5 +51,8 @@ layout: default
       <p class="card-text"><small>{{ projeto.aluno }}</small></p>
     </div>
   </div></div>{% endif %}{% endfor %}</div>
+
+  <hr class="section-divider mt-4">
+
   {% endif %}
 </section>

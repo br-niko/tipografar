@@ -7,20 +7,30 @@
 html { scroll-behavior: smooth; }
 body { background-color: $body-bg; }
 
+/* REMOVE O SUBLINHADO DOS LINKS "ver todos" */
+.link-primary {
+  text-decoration: none !important;
+}
+
 .section-title, .page-title { font-family: $font-family-sans-serif; font-size: 19.2px; font-weight: 400; color: $dark; }
+
+/* ADICIONA O ESTILO DO FIO */
+.section-divider {
+  border: 0;
+  border-top: 1px solid $dark;
+  opacity: 0.25;
+}
 
 .card {
   border: none; background-color: transparent;
   .card-body { padding-left: 0; padding-right: 0; }
-  .card-title { font-family: $font-family-mono; font-weight: 700; font-size: 15px; color: $primary; margin-top: 0.25rem; } /* Adicionei um margin-top */
+  .card-title { font-family: $font-family-mono; font-weight: 700; font-size: 15px; color: $primary; margin-top: 0.25rem; }
   .card-text small { font-family: $font-family-mono; font-weight: 400; font-size: 15px; color: $primary; }
 }
 
 .category-badge { display: inline-block; padding: 0.35em 0.65em; font-size: .75em; font-weight: 400; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: .25rem; background-color: $category-blue; text-decoration: none; font-family: $font-family-sans-serif; }
 .archive-tag { display: inline-block; padding: 0.35em 0.65em; font-size: .75em; font-weight: 400; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: .25rem; background-color: $muted-blue; text-decoration: none; font-family: $font-family-sans-serif; }
 .award-tag { display: inline-block; padding: 0.35em 0.65em; font-size: .75em; font-weight: 700; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: .25rem; background-color: $premium; text-decoration: none; font-family: $font-family-sans-serif; }
-
-/* O NOVO ESTILO ESTÁ AQUI */
 .category-outline-badge {
   display: inline-block;
   padding: 0.3em 0.6em;
@@ -60,7 +70,7 @@ body { background-color: $body-bg; }
 .main-feature-author { font-family: $font-family-mono; font-weight: 400; font-size: 15px; color: $primary; margin-left: -50px; }
 
 @keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 0.9; } }
-.skeleton { background-color: rgba(255, 255, 255, 0.8); border-radius: 0.25rem; animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+.skeleton { background-color: rgba(255, 255, 255, 0.8); border-radius: 0.25rem; animation: pulse 1.5s cubic-bezier(0.4, 0, 0, 0.6, 1) infinite; }
 
 #search-results {
   background-color: $white;
