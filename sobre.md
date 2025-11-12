@@ -18,8 +18,3 @@ permalink: /sobre/
   </div>
 </div>
 
-## Sobre o Projeto MD
-
-teste teste
-> teste
-
