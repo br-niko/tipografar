@@ -5,11 +5,12 @@ permalink: /busca/
 ---
 
 <div class="search-results-page">
-  <h1 class="page-title">Resultados para "<span id="search-query-display">...</span>"</h1>
+  <h1 class="page-title">resultados para "<span id="search-query-display">...</span>"</h1>
   <hr class="section-divider">
 
   <div id="full-search-results-projects">
     <h2 class="section-title">projetos</h2>
+     <hr class="section-divider--muted">
     <div class="row" id="full-project-results-list">
       <p>Carregando resultados...</p>
     </div>
@@ -17,6 +18,7 @@ permalink: /busca/
 
   <div id="full-search-results-taxonomies" class="mt-5">
     <h2 class="section-title">categorias e tags</h2>
+         <hr class="section-divider--muted">
     <div id="full-taxonomy-results-list" class="tag-cloud" style="text-align: left;">
       </div>
   </div>
