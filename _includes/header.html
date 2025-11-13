@@ -1,48 +1,29 @@
-<header class="site-header py-3 mb-4" style="border-bottom: 1px solid #ffffff">
-    <div
-        class="container d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between"
-    >
-        <a
-            href="/"
-            class="logo-link d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
-        >
-            <span class="logo-projeto">Projeto</span>
-            <span class="logo-tipografar">Tipografar</span>
-        </a>
-        <div class="d-flex align-items-center">
-            <div class="search-wrapper position-relative me-lg-4">
-                <form class="search-form" role="search">
-                    <input
-                        type="search"
-                        id="search-input"
-                        class="form-control"
-                        placeholder="Buscar..."
-                        aria-label="Buscar"
-                    />
-                    <button class="btn search-btn" type="submit">
-                        {% include icons/lupa.svg %}
-                    </button>
-                </form>
-                <div
-                    id="search-results"
-                    class="position-absolute"
-                    style="
-                        top: 100%;
-                        left: 0;
-                        right: 0;
-                        z-index: 1000;
-                        display: none;
-                    "
-                ></div>
-            </div>
-            <ul class="nav nav-pills">
-                <li class="nav-item">
-                    <a href="/#navegacao-tags" class="nav-link">categorias</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/sobre/" class="nav-link">sobre</a>
-                </li>
-            </ul>
-        </div>
+<header class="site-header py-3 mb-4" style="border-top: 1px solid #FFFFFF;">
+  <div class="container d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between">
+    <a href="/" class="logo-link d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+      <span class="logo-projeto">Projeto</span>
+      <span class="logo-tipografar">Tipografar</span>
+    </a>
+    <div class="d-flex align-items-center">
+      
+      <div class="search-wrapper position-relative me-lg-4">
+        
+        <form class="search-form" role="search">
+          <div class="input-group">
+            <input type="search" id="search-input" class="form-control" placeholder="Buscar..." aria-label="Buscar">
+            <button class="btn search-btn-group" type="submit">
+              {% include icons/lupa.svg %}
+            </button>
+          </div>
+        </form>
+        
+        <div id="search-results" class="position-absolute" style="top: 100%; left: 0; right: 0; z-index: 1000; display: none;"></div>
+      </div>
+      
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="/#navegacao-tags" class="nav-link">categorias</a></li>
+        <li class="nav-item"><a href="/sobre/" class="nav-link">sobre</a></li>
+      </ul>
     </div>
+  </div>
 </header>
