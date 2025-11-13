@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
       this.field('aluno');
       this.field('category');
       this.field('premio', { boost: 5 });
-      // CORREÇÃO: Loop movido para dentro
       data.forEach((doc, idx) => { doc.id = idx; this.add(doc); });
     });
   });
@@ -37,9 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
       this.pipeline.remove(lunr.stemmer); this.pipeline.remove(lunr.stopWordFilter);
       this.ref('id');
       this.field('name', { boost: 5 });
-      // CORREÇÃO: Loop movido para dentro
-      data.forEach((doc, idx) => { doc.id = idx; this.add(doc); });
     });
+    data.forEach((doc, idx) => { doc.id = idx; this.add(doc); });
   });
 
   Promise.all([loadProjects, loadTaxonomies]).then(() => {
@@ -52,20 +50,19 @@ document.addEventListener('DOMContentLoaded', () => {
       projectResults.forEach(result => {
         const doc = projectData[result.ref];
         
-        // Lógica para criar o badge de prêmio (se existir)
         let awardBadge = '';
         if (doc.premio && doc.premio.trim() !== "") {
           awardBadge = `<span class="award-tag me-2 mb-2">${doc.premio}</span>`;
         }
 
-        // HTML DO CARD ATUALIZADO com as duas tags
+        // CLASSE DE BADGE CORRIGIDA AQUI
         projectHTML += `
           <div class="col-md-4 mb-4">
             <div class="card h-100">
               <div style="height: 200px; background-color: #eee;"></div>
               <div class="card-body">
                 <div class="card-meta-badges">
-                  <a href="${doc.category_url}" class="category-badge-outline mb-2">${doc.category}</a>
+                  <a href="${doc.category_url}" class="category-outline-badge mb-2">${doc.category}</a>
                   ${awardBadge}
                 </div>
                 <h5 class="card-title">
