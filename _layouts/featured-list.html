@@ -12,11 +12,12 @@ layout: default
           <div class="card h-100">
             <div style="height: 200px; background-color: #eee;"></div>
             <div class="card-body">
-              <div class="card-meta-badges">
-                <span class="category-outline-badge me-2 mb-2">{{ projeto.categories | first }}</span>
-                {% if projeto.premio and projeto.premio != "" %}<span class="award-tag me-2 mb-2">{{ projeto.premio }}</span>{% endif %}
-              </div>
-              <h5 class="card-title"><a href="{{ projeto.url }}" class="text-decoration-none">{{ projeto.title }}</a></h5>
+              {% if projeto.categories.size > 0 %}
+                <a href="/categorias/{{ projeto.categories | first | slugify }}/" class="category-badge-outline mb-2">{{ projeto.categories | first }}</a>
+              {% endif %}
+              <h5 class="card-title">
+                <a href="{{ projeto.url }}" class="text-decoration-none">{{ projeto.title }}</a>
+              </h5>
               <p class="card-text"><small>{{ projeto.aluno }}</small></p>
             </div>
           </div>

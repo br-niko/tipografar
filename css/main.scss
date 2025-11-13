@@ -30,9 +30,29 @@ body { background-color: $body-bg; }
   .card-text small { font-family: $font-family-mono; font-weight: 400; font-size: 15px; color: $primary; }
 }
 
+/* ESTILOS DOS BADGES */
 .category-badge { display: inline-block; padding: 0.35em 0.65em; font-size: .75em; font-weight: 400; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: .25rem; background-color: $category-blue; text-decoration: none; font-family: $font-family-sans-serif; }
 .archive-tag { display: inline-block; padding: 0.35em 0.65em; font-size: .75em; font-weight: 400; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: .25rem; background-color: $muted-blue; text-decoration: none; font-family: $font-family-sans-serif; }
 .award-tag { display: inline-block; padding: 0.35em 0.65em; font-size: .75em; font-weight: 700; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: .25rem; background-color: $premium; text-decoration: none; font-family: $font-family-sans-serif; }
+
+/* NOVO ESTILO DE BADGE (CONTORNO) */
+.category-badge-outline {
+  display: inline-block;
+  padding: 0.25em 0.55em;
+  font-size: .75em;
+  font-weight: 400;
+  line-height: 1;
+  color: $category-blue; /* Texto azul */
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  background-color: transparent; /* Fundo transparente */
+  border: 1px solid $category-blue; /* Borda azul */
+  text-decoration: none;
+  font-family: $font-family-sans-serif;
+}
+
 
 .tag-cloud { text-align: left; line-height: 2.2; }
 .tag-link { display: inline-block; text-decoration: none; color: $muted-blue; margin: 0 0.5rem 0.5rem 0; }

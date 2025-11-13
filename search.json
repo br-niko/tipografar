@@ -7,7 +7,8 @@ layout: null
       "title": "{{ projeto.title | escape }}",
       "aluno": "{{ projeto.aluno | escape }}",
       "url": "{{ projeto.url | relative_url }}",
-      "categories": "{{ projeto.categories | first | escape }}",
+      "category": "{{ projeto.categories | first | escape }}",
+      "category_url": "/categorias/{{ projeto.categories | first | slugify }}/",
       "premio": "{{ projeto.premio | escape }}"
     }
     {% unless forloop.last %},{% endunless %}

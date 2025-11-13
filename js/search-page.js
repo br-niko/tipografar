@@ -4,23 +4,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const taxonomyList = document.getElementById('full-taxonomy-results-list');
   const queryDisplay = document.getElementById('search-query-display');
 
-  // Se não estamos na página de busca, não faz nada
-  if (!projectList || !taxonomyList || !queryDisplay) {
-    return;
-  }
+  if (!projectList || !taxonomyList || !queryDisplay) { return; }
 
-  // 1. Pegar o termo da URL (ex: /busca/?q=lettering)
   const urlParams = new URLSearchParams(window.location.search);
   const query = urlParams.get('q');
   queryDisplay.textContent = query || '';
 
   if (!query) {
-    // Corrigido para usar aspas simples por dentro
     projectList.innerHTML = '<p class="col-12">Por favor, digite um termo na busca.</p>';
     return;
   }
 
-  // 2. Inicializar os índices
   let projectIdx, taxonomyIdx, projectData, taxonomyData;
 
   const loadProjects = fetch('/search.json').then(r => r.json()).then(data => {
@@ -30,10 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
       this.ref('id');
       this.field('title', { boost: 10 });
       this.field('aluno');
-
-      // O loop de 'add' DEVE estar dentro desta função
-      data.forEach((doc, idx) => { doc.id = idx; this.add(doc); });
+      this.field('category'); // Adicionado campo de categoria à busca
     });
+    data.forEach((doc, idx) => { doc.id = idx; this.add(doc); });
   });
 
   const loadTaxonomies = fetch('/taxonomies.json').then(r => r.json()).then(data => {
@@ -42,38 +35,25 @@ document.addEventListener('DOMContentLoaded', () => {
       this.pipeline.remove(lunr.stemmer); this.pipeline.remove(lunr.stopWordFilter);
       this.ref('id');
       this.field('name', { boost: 5 });
-
-      // O loop de 'add' DEVE estar dentro desta função
-      data.forEach((doc, idx) => { doc.id = idx; this.add(doc); });
     });
+    data.forEach((doc, idx) => { doc.id = idx; this.add(doc); });
   });
 
-  // 3. Quando TUDO estiver carregado, rodar a busca
   Promise.all([loadProjects, loadTaxonomies]).then(() => {
     const searchQuery = query + '*';
     const projectResults = projectIdx.search(searchQuery);
     const taxonomyResults = taxonomyIdx.search(searchQuery);
 
-    // 4. Construir o HTML dos Projetos (em formato de card)
     let projectHTML = '';
     if (projectResults.length > 0) {
       projectResults.forEach(result => {
         const doc = projectData[result.ref];
-        
-        // Helper variable for the award badge
-        const awardBadge = (doc.premio && doc.premio !== "") 
-          ? `<span class="award-tag me-2 mb-2">${doc.premio}</span>` 
-          : '';
-
         projectHTML += `
           <div class="col-md-4 mb-4">
             <div class="card h-100">
               <div style="height: 200px; background-color: #eee;"></div>
               <div class="card-body">
-                <div class="card-meta-badges">
-                  <span class="category-outline-badge me-2 mb-2">${doc.categories}</span>
-                  ${awardBadge}
-                </div>
+                <a href="${doc.category_url}" class="category-badge-outline mb-2">${doc.category}</a>
                 <h5 class="card-title">
                   <a href="${doc.url}" class="text-decoration-none">${doc.title}</a>
                 </h5>
@@ -87,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     projectList.innerHTML = projectHTML;
 
-    // 5. Construir o HTML das Tags/Categorias (em formato de badge)
     let taxonomyHTML = '';
     if (taxonomyResults.length > 0) {
       taxonomyResults.forEach(result => {
