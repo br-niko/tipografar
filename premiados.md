@@ -1,5 +1,5 @@
 ---
 layout: premiados-list
-title: Projetos Premiados
+title: projetos premiados
 permalink: /premiados/
 ---
