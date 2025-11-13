@@ -4,31 +4,21 @@ layout: default
 <article class="project-page">
 
   <header class="project-header mb-4">
-    
-    {% comment %} 
-      ORDEM ALTERADA: 
-      1. Título
-      2. Meta (Tags/Categorias/Prêmios)
-      3. Autor
-      4. Fio (com a nova classe 'section-divider--muted')
-    {% endcomment %}
-
     <h1 class="page-title">{{ page.title }}</h1>
-    
-    <div class="project-meta d-flex align-items-center mt-3 mb-2">
+    <hr class="section-divider">
+     <div class="project-meta d-flex align-items-center">
       <a href="/categorias/{{ page.categories | first | slugify }}/" class="category-badge me-2 mb-2">{{ page.categories | first }}</a>
       <a href="/semestres/{{ page.semestre | replace: '/', '-' }}/" class="archive-tag me-2 mb-2">{{ page.semestre }}</a>
       {% if page.premio and page.premio != "" %}
         <span class="award-tag me-2 mb-2">{{ page.premio }}</span>
       {% endif %}
     </div>
-
     <p class="project-author">por {{ page.aluno }}</p>
-
     <hr class="section-divider section-divider--muted">
-  
+   
   </header>
 
+  <hr class="mb-4">
   <div class="row justify-content-center">
     <div class="col-lg-8">
       <div class="project-content">
