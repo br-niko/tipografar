@@ -7,21 +7,7 @@
 html { scroll-behavior: smooth; }
 body { background-color: $body-bg; }
 
-/* REMOVE O SUBLINHADO DOS LINKS "ver todos" */
-.link-primary {
-  text-decoration: none !important;
-}
-
 .section-title, .page-title { font-family: $font-family-sans-serif; font-size: 19.2px; font-weight: 400; color: $dark; }
-
-/* AJUSTE NO ESPAÇAMENTO DO FIO */
-.section-divider {
-  border: 0;
-  border-top: 1px solid $black;
-  opacity: 1;
-  margin-top: -0.3rem; 
-  margin-bottom: 1.5rem; 
-}
 
 .card {
   border: none; background-color: transparent;
@@ -30,29 +16,9 @@ body { background-color: $body-bg; }
   .card-text small { font-family: $font-family-mono; font-weight: 400; font-size: 15px; color: $primary; }
 }
 
-/* ESTILOS DOS BADGES */
 .category-badge { display: inline-block; padding: 0.35em 0.65em; font-size: .75em; font-weight: 400; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: .25rem; background-color: $category-blue; text-decoration: none; font-family: $font-family-sans-serif; }
 .archive-tag { display: inline-block; padding: 0.35em 0.65em; font-size: .75em; font-weight: 400; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: .25rem; background-color: $muted-blue; text-decoration: none; font-family: $font-family-sans-serif; }
 .award-tag { display: inline-block; padding: 0.35em 0.65em; font-size: .75em; font-weight: 700; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: .25rem; background-color: $premium; text-decoration: none; font-family: $font-family-sans-serif; }
-
-/* NOME DA CLASSE CORRIGIDO (para bater com featured-list.html) */
-.category-outline-badge {
-  display: inline-block;
-  padding: 0.25em 0.55em;
-  font-size: .75em;
-  font-weight: 400;
-  line-height: 1;
-  color: $category-blue; 
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: .25rem;
-  background-color: transparent; 
-  border: 1px solid $category-blue; 
-  text-decoration: none;
-  font-family: $font-family-sans-serif;
-}
-
 
 .tag-cloud { text-align: left; line-height: 2.2; }
 .tag-link { display: inline-block; text-decoration: none; color: $muted-blue; margin: 0 0.5rem 0.5rem 0; }
@@ -75,9 +41,24 @@ body { background-color: $body-bg; }
 .main-feature-author { font-family: $font-family-mono; font-weight: 400; font-size: 15px; color: $primary; margin-left: -50px; }
 
 @keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 0.9; } }
+/* A CORREÇÃO ESTÁ AQUI (linha 81) */
 .skeleton { background-color: rgba(255, 255, 255, 0.8); border-radius: 0.25rem; animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
 
 #search-results {
   background-color: $white;
   border: 1px solid rgba($dark, 0.1);
-  border-radius: 0.25
+  border-radius: 0.25rem;
+  margin-top: 0.25rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+
+  .search-result-header { font-family: $font-family-sans-serif; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; padding: 0.75rem 1rem 0.25rem; color: $dark; }
+  .list-group-item {
+    background-color: transparent;
+    a { color: $dark; font-weight: bold; text-decoration: none; }
+    small { color: $muted-blue; }
+    .search-result-type { color: $muted-blue; }
+  }
+  .search-see-all { display: block; padding: 0.75rem 1rem; font-family: $font-family-sans-serif; font-weight: 700; font-size: 0.9rem; color: $primary; text-decoration: none; background-color: $light; border-top: 1px solid rgba($dark, 0.1);
+    &:hover { background-color: darken($light, 2%); text-decoration: underline; }
+  }
+}
