@@ -16,6 +16,9 @@ layout: default
               {% if projeto.categories.size > 0 %}
                 <a href="/categorias/{{ projeto.categories | first | slugify }}/" class="category-badge-outline mb-2">{{ projeto.categories | first }}</a>
               {% endif %}
+              {% if projeto.premio and projeto.premio != "" %}
+                  <span class="award-tag me-2 mb-2">{{ projeto.premio }}</span>
+                {% endif %}
               <h5 class="card-title">
                 <a href="{{ projeto.url }}" class="text-decoration-none">{{ projeto.title }}</a>
               </h5>
