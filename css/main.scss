@@ -19,7 +19,7 @@ body { background-color: $body-bg; }
   border: 0;
   border-top: 1px solid $dark;
   opacity: 0.25;
-  margin-top: -0.5rem; /* Puxa o fio para perto do título */
+  margin-top: -0.8rem; /* <-- A MUDANÇA ESTÁ AQUI */
   margin-bottom: 1.5rem; /* Dá espaço antes do grid */
 }
 
@@ -33,23 +33,6 @@ body { background-color: $body-bg; }
 .category-badge { display: inline-block; padding: 0.35em 0.65em; font-size: .75em; font-weight: 400; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: .25rem; background-color: $category-blue; text-decoration: none; font-family: $font-family-sans-serif; }
 .archive-tag { display: inline-block; padding: 0.35em 0.65em; font-size: .75em; font-weight: 400; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: .25rem; background-color: $muted-blue; text-decoration: none; font-family: $font-family-sans-serif; }
 .award-tag { display: inline-block; padding: 0.35em 0.65em; font-size: .75em; font-weight: 700; line-height: 1; color: #fff; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: .25rem; background-color: $premium; text-decoration: none; font-family: $font-family-sans-serif; }
-.category-outline-badge {
-  display: inline-block;
-  padding: 0.3em 0.6em;
-  font-size: .75em;
-  font-weight: 400;
-  line-height: 1;
-  color: $category-blue;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: .25rem;
-  border: 1px solid $category-blue;
-  background-color: transparent;
-  text-decoration: none;
-  font-family: $font-family-sans-serif;
-  margin-bottom: 0.25rem;
-}
 
 .tag-cloud { text-align: left; line-height: 2.2; }
 .tag-link { display: inline-block; text-decoration: none; color: $muted-blue; margin: 0 0.5rem 0.5rem 0; }
@@ -72,7 +55,7 @@ body { background-color: $body-bg; }
 .main-feature-author { font-family: $font-family-mono; font-weight: 400; font-size: 15px; color: $primary; margin-left: -50px; }
 
 @keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 0.9; } }
-.skeleton { background-color: rgba(255, 255, 255, 0.8); border-radius: 0.25rem; animation: pulse 1.5s cubic-bezier(0.4, 0, 0, 0.6, 1) infinite; }
+.skeleton { background-color: rgba(255, 255, 255, 0.8); border-radius: 0.25rem; animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
 
 #search-results {
   background-color: $white;
