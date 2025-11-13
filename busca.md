@@ -6,6 +6,7 @@ permalink: /busca/
 
 <div class="search-results-page">
   <h1 class="page-title mb-4">Resultados para "<span id="search-query-display">...</span>"</h1>
+  <hr class="section-divider">
 
   <div id="full-search-results-projects">
     <h2 class="section-title">Projetos</h2>

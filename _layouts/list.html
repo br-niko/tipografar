@@ -6,6 +6,7 @@ layout: default
   
   {% if page.list_title %}{% assign page_value = page.list_title %}{% else %}{% assign page_value = page.title %}{% endif %}
   <h1 class="page-title mb-4">{{ page_value }}</h1>
+  <hr class="section-divider">
 
   <div class="row">
     {% assign item_type = page.type %}{% assign item_value = page_value | downcase %}
