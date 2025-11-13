@@ -9,7 +9,7 @@ permalink: /busca/
   <hr class="section-divider">
 
   <div id="full-search-results-projects">
-    <h2 class="section-title">projetos</h2>
+    <h2 class="section-title text-muted-blue">projetos</h2>
      <hr class="section-divider--muted">
     <div class="row" id="full-project-results-list">
       <p>Carregando resultados...</p>
@@ -17,7 +17,7 @@ permalink: /busca/
   </div>
 
   <div id="full-search-results-taxonomies" class="mt-5">
-    <h2 class="section-title">categorias e tags</h2>
+    <h2 class="section-title text-muted-blue">categorias e tags</h2>
          <hr class="section-divider--muted">
     <div id="full-taxonomy-results-list" class="tag-cloud" style="text-align: left;">
       </div>
