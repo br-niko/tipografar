@@ -15,8 +15,8 @@ layout: default
 </section>
 
 <section class="mb-5">
-  {% comment %} A CLASSE "mb-3" FOI REMOVIDA DESTA LINHA ABAIXO {% endcomment %}
-  <div class="d-flex justify-content-between align-items-center">
+  {% comment %} A CLASSE FOI MUDADA DE align-items-center PARA align-items-baseline {% endcomment %}
+  <div class="d-flex justify-content-between align-items-baseline">
     <h2 class="section-title">Destaques</h2>
     <a href="/arquivo/" class="link-primary">ver todos →</a>
   </div>
@@ -26,8 +26,8 @@ layout: default
 
 <section class="mb-5">
   {% assign latest_semester = site.posts | map: "semestre" | compact | uniq | sort | last %}{% if latest_semester %}
-  {% comment %} A CLASSE "mb-3" FOI REMOVIDA DESTA LINHA ABAIXO {% endcomment %}
-  <div class="d-flex justify-content-between align-items-center">
+  {% comment %} A CLASSE FOI MUDADA DE align-items-center PARA align-items-baseline {% endcomment %}
+  <div class="d-flex justify-content-between align-items-baseline">
     <h2 class="section-title">{{ latest_semester }}</h2>
     <a href="/semestres/{{ latest_semester | replace: '/', '-' }}/" class="link-primary">ver todos →</a>
   </div>
