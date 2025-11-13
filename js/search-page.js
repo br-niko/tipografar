@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       this.ref('id');
       this.field('title', { boost: 10 });
       this.field('aluno');
-      this.field('category');
+      this.field('category'); // Agora o search.json tem esse campo
       this.field('premio', { boost: 5 });
       data.forEach((doc, idx) => { doc.id = idx; this.add(doc); });
     });
