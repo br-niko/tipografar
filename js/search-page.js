@@ -24,9 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
       this.ref('id');
       this.field('title', { boost: 10 });
       this.field('aluno');
-      this.field('category'); // Adicionado campo de categoria à busca
+      this.field('category');
+      this.field('premio', { boost: 5 }); // <-- CAMPO ADICIONADO
+      data.forEach((doc, idx) => { doc.id = idx; this.add(doc); });
     });
-    data.forEach((doc, idx) => { doc.id = idx; this.add(doc); });
   });
 
   const loadTaxonomies = fetch('/taxonomies.json').then(r => r.json()).then(data => {
