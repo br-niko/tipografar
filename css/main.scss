@@ -17,7 +17,7 @@ body { background-color: $body-bg; }
 /* AJUSTE NO ESPAÇAMENTO DO FIO */
 .section-divider {
   border: 0;
-  border-top: 2px solid $black; /* <-- MUDANÇA DE ESPESSURA */
+  border-top: 1px solid $black; /* <-- MUDANÇA DE ESPESSURA */
   opacity: 0.25;
   margin-top: -0.3rem; 
   margin-bottom: 1.5rem; 
