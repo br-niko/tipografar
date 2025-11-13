@@ -55,14 +55,14 @@ document.addEventListener('DOMContentLoaded', () => {
           awardBadge = `<span class="award-tag me-2 mb-2">${doc.premio}</span>`;
         }
 
-        // CLASSE DE BADGE CORRIGIDA AQUI
+        // HTML DO CARD CORRIGIDO (classe e variável)
         projectHTML += `
           <div class="col-md-4 mb-4">
             <div class="card h-100">
               <div style="height: 200px; background-color: #eee;"></div>
               <div class="card-body">
                 <div class="card-meta-badges">
-                  <a href="${doc.category_url}" class="category-outline-badge mb-2">${doc.category}</a>
+                  <a href="${doc.category_url}" class="category-badge-outline mb-2">${doc.category}</a>
                   ${awardBadge}
                 </div>
                 <h5 class="card-title">
