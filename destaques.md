@@ -1,5 +1,5 @@
 ---
 layout: featured-list
-title: Projetos em Destaque
+title: projetos em destaque
 permalink: /destaques/
 ---
