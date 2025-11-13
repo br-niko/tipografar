@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Resultados da Busca
+title: resultados da busca
 permalink: /busca/
 ---
 
@@ -9,14 +9,14 @@ permalink: /busca/
   <hr class="section-divider">
 
   <div id="full-search-results-projects">
-    <h2 class="section-title">Projetos</h2>
+    <h2 class="section-title">projetos</h2>
     <div class="row" id="full-project-results-list">
       <p>Carregando resultados...</p>
     </div>
   </div>
 
   <div id="full-search-results-taxonomies" class="mt-5">
-    <h2 class="section-title">Categorias e Tags</h2>
+    <h2 class="section-title">categorias e tags</h2>
     <div id="full-taxonomy-results-list" class="tag-cloud" style="text-align: left;">
       </div>
   </div>
