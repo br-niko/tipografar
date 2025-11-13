@@ -19,6 +19,7 @@ body { background-color: $body-bg; }
   border: 0;
   border-top: 1px solid $black;
   /* A linha 'opacity: 0.25;' foi removida */
+  opacity: 1;
   margin-top: -0.3rem; 
   margin-bottom: 1.5rem; 
 }
