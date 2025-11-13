@@ -4,7 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const taxonomyList = document.getElementById('full-taxonomy-results-list');
   const queryDisplay = document.getElementById('search-query-display');
 
-  if (!projectList || !taxonomyList || !queryDisplay) { return; }
+  if (!projectList || !taxonomyList || !queryDisplay) {
+    return;
+  }
 
   const urlParams = new URLSearchParams(window.location.search);
   const query = urlParams.get('q');
@@ -24,8 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
       this.ref('id');
       this.field('title', { boost: 10 });
       this.field('aluno');
-      this.field('category'); // Agora o search.json tem esse campo
+      this.field('category');
       this.field('premio', { boost: 5 });
+      // CORREÇÃO: Loop movido para dentro
       data.forEach((doc, idx) => { doc.id = idx; this.add(doc); });
     });
   });
@@ -36,15 +39,18 @@ document.addEventListener('DOMContentLoaded', () => {
       this.pipeline.remove(lunr.stemmer); this.pipeline.remove(lunr.stopWordFilter);
       this.ref('id');
       this.field('name', { boost: 5 });
+      // CORREÇÃO: Loop movido para dentro
+      data.forEach((doc, idx) => { doc.id = idx; this.add(doc); });
     });
-    data.forEach((doc, idx) => { doc.id = idx; this.add(doc); });
   });
 
+  // 3. Quando TUDO estiver carregado, rodar a busca
   Promise.all([loadProjects, loadTaxonomies]).then(() => {
     const searchQuery = query + '*';
     const projectResults = projectIdx.search(searchQuery);
     const taxonomyResults = taxonomyIdx.search(searchQuery);
 
+    // 4. Construir o HTML dos Projetos (em formato de card)
     let projectHTML = '';
     if (projectResults.length > 0) {
       projectResults.forEach(result => {
@@ -55,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
           awardBadge = `<span class="award-tag me-2 mb-2">${doc.premio}</span>`;
         }
 
-        // HTML DO CARD CORRIGIDO (classe e variável)
         projectHTML += `
           <div class="col-md-4 mb-4">
             <div class="card h-100">
@@ -78,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     projectList.innerHTML = projectHTML;
 
+    // 5. Construir o HTML das Tags/Categorias (em formato de badge)
     let taxonomyHTML = '';
     if (taxonomyResults.length > 0) {
       taxonomyResults.forEach(result => {
