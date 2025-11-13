@@ -1,6 +1,6 @@
 ---
 layout: sobre
-title: Sobre o Projeto
+title: Sobre o Projeto Tipografar
 permalink: /sobre/
 ---
 

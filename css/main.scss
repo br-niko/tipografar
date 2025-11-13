@@ -22,6 +22,10 @@ body { background-color: $body-bg; }
   margin-top: -0.3rem; 
   margin-bottom: 1.5rem; 
 }
+.section-divider--muted {
+  border-top-color: $muted-blue;
+  opacity: 1
+}
 
 .card {
   border: none; background-color: transparent;
