@@ -3,13 +3,13 @@ layout: default
 ---
 
 <div class="premiados-list-page">
-  
+
   <h1 class="page-title">{{ page.title }}</h1>
   <hr class="section-divider">
 
   <div class="row">
     {% for projeto in site.posts %}
-      
+
       {% if projeto.premio and projeto.premio != "" %}
         <div class="col-md-4 mb-4">
           <div class="card h-100">
@@ -17,8 +17,11 @@ layout: default
             <div class="card-body">
 
               <div class="card-meta-badges">
-                {% comment %} A CATEGORIA E O PRÊMIO QUE FALTAVAM ESTÃO AQUI {% endcomment %}
-                <span class="category-badge-outline me-2 mb-2">{{ projeto.categories | first }}</span>
+                {% comment %}
+                  A CORREÇÃO ESTÁ AQUI:
+                  Transformando o <span> em um <a> para ser clicável.
+                {% endcomment %}
+                <a href="/categorias/{{ projeto.categories | first | slugify }}/" class="category-badge-outline me-2 mb-2">{{ projeto.categories | first }}</a>
                 <span class="award-tag me-2 mb-2">{{ projeto.premio }}</span>
               </div>
 
@@ -29,7 +32,7 @@ layout: default
             </div>
           </div>
         </div>
-        
+
       {% endif %}
     {% endfor %}
   </div>
