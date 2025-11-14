@@ -151,9 +151,10 @@ body {
     color: $muted-blue !important;
 }
 
+/* CORREÇÃO AQUI (Request 2): line-height diminuído */
 .tag-cloud {
     text-align: left;
-    line-height: 2.2;
+    line-height: 1.7;
 }
 /* NUVEM DE TAGS (COM FONTE SANS-SERIF 'Archivo') */
 .tag-link {
@@ -316,45 +317,42 @@ input[type="search"]::-webkit-search-cancel-button {
 ---------------------------------------------------------------- */
 
 /* Ponto de Quebra 1: Tablets (abaixo de 992px) */
-/* Resolve o Problema 1 (logo sobreposto) */
 @media (max-width: 991.98px) {
     .site-header .container {
-        flex-direction: column; /* Empilha os elementos */
+        flex-direction: column;
     }
 
     .site-header .logo-link {
-        align-items: center !important; /* Centraliza o logo */
-        margin-right: 0 !important; /* Remove a margem automática */
-        margin-bottom: 0.5rem !important; /* Reduz a margem inferior */
+        align-items: center !important;
+        margin-right: 0 !important;
+        margin-bottom: 0.5rem !important;
     }
 
     .site-header .d-flex.align-items-center {
-        flex-direction: column; /* Empilha a busca e o menu */
+        flex-direction: column;
         width: 100%;
     }
 
     .site-header .search-wrapper {
-        width: 100%; /* Faz a busca ocupar 100% */
-        max-width: 400px; /* Mas limita a largura máxima */
+        width: 100%;
+        max-width: 400px;
         margin-top: 0.5rem;
         margin-right: 0 !important;
     }
 
+    /* CORREÇÃO AQUI (Request 1): margin-top diminuído */
     .site-header .nav-pills {
-        margin-top: 0.75rem; /* Espaço entre busca e links do menu */
-        justify-content: center; /* Centraliza os links do menu */
+        margin-top: 0.5rem;
+        justify-content: center;
     }
 }
 
 /* Ponto de Quebra 2: Celulares (abaixo de 767.98px) */
-/* Resolve o Problema 2 (espaço links) e Problema 3 (título grande) */
 @media (max-width: 767.98px) {
-    /* Resolve o Problema 3.3 (Título muito grande) */
     .main-feature-title {
-        font-size: 56px; /* Reduz de 80px para 56px (aprox. 30%) */
+        font-size: 56px;
     }
 
-    /* Centraliza a imagem e o autor em celulares */
     .main-feature-image {
         margin-left: 0;
     }
@@ -362,31 +360,26 @@ input[type="search"]::-webkit-search-cancel-button {
         margin-left: 0;
     }
 
-    /* Resolve o Problema 2 (espaço links) e 3.2 (links lado a lado) */
     .site-header .nav-pills {
-        flex-direction: row; /* Força os links a ficarem lado a lado */
-        flex-wrap: wrap; /* Permite que quebrem a linha se necessário */
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 
     .site-header .nav-pills .nav-item {
-        padding: 0 0.5rem; /* Adiciona espaço entre "categorias" e "sobre" */
+        padding: 0 0.5rem;
     }
 }
 
 /* Ponto de Quebra 3: Celulares Muito Pequenos (abaixo de 450px) */
-/* Resolve o Problema 3.1 (busca cortada) */
 @media (max-width: 450px) {
-    /* Reduz o tamanho da busca para não cortar */
     .site-header .search-wrapper {
         width: 95%;
     }
 
-    /* Reduz o título do logo */
     .site-header .logo-tipografar {
         font-size: 24px;
     }
 
-    /* Reduz ainda mais o título da home */
     .main-feature-title {
         font-size: 42px;
     }
