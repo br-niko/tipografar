@@ -63,7 +63,7 @@ body {
     }
 }
 
-/* ESTILOS DOS BADGES */
+/* ESTILOS DOS BADGES (COM FONTE MONO) */
 .category-badge {
     display: inline-block;
     padding: 0.35em 0.65em;
@@ -94,8 +94,6 @@ body {
     text-decoration: none;
     font-family: $font-family-mono;
 }
-
-/* A CORREÇÃO ESTÁ AQUI: font-weight de 700 para 400 */
 .award-tag {
     display: inline-block;
     padding: 0.35em 0.65em;
@@ -112,7 +110,7 @@ body {
     font-family: $font-family-mono;
 }
 
-/* ESTILO DE CONTORNO (CATEGORIA) */
+/* ESTILO DE CONTORNO (CATEGORIA) (COM FONTE MONO) */
 .category-badge-outline {
     display: inline-block;
     padding: 0.25em 0.55em;
@@ -130,7 +128,7 @@ body {
     font-family: $font-family-mono;
 }
 
-/* NOVO ESTILO: BADGE DE SEMESTRE (CONTORNO) */
+/* NOVO ESTILO: BADGE DE SEMESTRE (CONTORNO) (COM FONTE MONO) */
 .archive-tag-outline {
     display: inline-block;
     padding: 0.25em 0.55em;
@@ -157,13 +155,13 @@ body {
     text-align: left;
     line-height: 2.2;
 }
-/* NUVEM DE TAGS (COM FONTE MONO) */
+/* NUVEM DE TAGS (COM FONTE SANS-SERIF 'Archivo') */
 .tag-link {
     display: inline-block;
     text-decoration: none;
     color: $muted-blue;
     margin: 0 0.5rem 0.5rem 0;
-    font-family: $font-family-mono;
+    font-family: $font-family-sans-serif; /* <-- MUDANÇA ESTÁ AQUI */
 }
 
 /* ESTILOS DO CABEÇALHO E BUSCA */
