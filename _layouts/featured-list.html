@@ -1,33 +1,41 @@
 ---
 layout: default
 ---
+
 <div class="featured-list-page">
-  
-  <h1 class="page-title">{{ page.title }}</h1>
-  <hr class="section-divider">
+    <h1 class="page-title">{{ page.title }}</h1>
+    <hr class="section-divider" />
 
-  <div class="row">
-    {% for projeto in site.posts %}
-      {% if projeto.featured == true %}
+    <div class="row">
+        {% for projeto in site.posts %} {% if projeto.featured == true %}
         <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <div style="height: 200px; background-color: #eee;"></div>
-            <div class="card-body">
-              {% if projeto.categories.size > 0 %}
-                <a href="/categorias/{{ projeto.categories | first | slugify }}/" class="category-badge-outline mb-2">{{ projeto.categories | first }}</a>
-              {% endif %}
-              {% if projeto.premio and projeto.premio != "" %}
-                  <span class="award-tag me-2 mb-2">{{ projeto.premio }}</span>
-                {% endif %}
-              <h5 class="card-title">
-                <a href="{{ projeto.url }}" class="text-decoration-none">{{ projeto.title }}</a>
-              </h5>
-              <p class="card-text"><small>{{ projeto.aluno }}</small></p>
+            <div class="card h-100">
+                <a
+                    href="{{ projeto.url }}"
+                    class="d-block card-img-placeholder"
+                    style="background-image: url('{{ projeto.imagem_capa | default: '/assets/images/placeholder.jpg' }}')"
+                ></a>
+                <div class="card-body">
+                    <div class="card-meta-badges">
+                        <a
+                            href="/categorias/{{ projeto.categories | first | slugify }}/"
+                            class="category-badge-outline me-2 mb-2"
+                            >{{ projeto.categories | first }}</a
+                        >
+                        {% if projeto.premio and projeto.premio != "" %}<span
+                            class="award-tag me-2 mb-2"
+                            >{{ projeto.premio }}</span
+                        >{% endif %}
+                    </div>
+                    <h5 class="card-title">
+                        <a href="{{ projeto.url }}" class="text-decoration-none"
+                            >{{ projeto.title }}</a
+                        >
+                    </h5>
+                    <p class="card-text"><small>{{ projeto.aluno }}</small></p>
+                </div>
             </div>
-          </div>
         </div>
-      {% endif %}
-    {% endfor %}
-  </div>
-
+        {% endif %} {% endfor %}
+    </div>
 </div>

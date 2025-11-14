@@ -1,18 +1,22 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const loaderContainer = document.getElementById('random-featured-project');
+document.addEventListener("DOMContentLoaded", () => {
+  const loaderContainer = document.getElementById("random-featured-project");
   if (!loaderContainer) return;
 
-  fetch('/featured_projects.json')
-    .then(response => response.json())
-    .then(projects => {
+  fetch("/featured_projects.json")
+    .then((response) => response.json())
+    .then((projects) => {
       if (projects.length === 0) {
-        loaderContainer.style.display = 'none';
+        loaderContainer.style.display = "none";
         return;
       }
 
-      const randomProject = projects[Math.floor(Math.random() * projects.length)];
+      const randomProject =
+        projects[Math.floor(Math.random() * projects.length)];
 
-      // Este é o HTML que cria a estrutura de sobreposição
+      // Define a imagem de capa (ou um placeholder)
+      const imageUrl =
+        randomProject.imagem_capa || "/assets/images/placeholder.jpg";
+
       const projectHTML = `
         <div class="col-lg-6">
           <h1 class="main-feature-title">
@@ -21,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         <div class="col-lg-6">
           <a href="${randomProject.url}" class="main-feature-image-wrapper d-block">
-            <div class="main-feature-image" style="height: 300px; background-color: #ddd;">
-              </div>
+            <div class="main-feature-image card-img-placeholder" style="height: 300px; background-image: url('${imageUrl}')">
+            </div>
             <p class="main-feature-author mt-2">${randomProject.aluno}</p>
           </a>
         </div>
@@ -30,11 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       setTimeout(() => {
         loaderContainer.innerHTML = projectHTML;
-        loaderContainer.classList.remove('loading');
-      }, 500); // 0.5 segundos de simulação de carga
+        loaderContainer.classList.remove("loading");
+      }, 500);
     })
-    .catch(error => {
-      console.error('Erro ao carregar projetos em destaque:', error);
-      loaderContainer.style.display = 'none';
+    .catch((error) => {
+      console.error("Erro ao carregar projetos em destaque:", error);
+      loaderContainer.style.display = "none";
     });
 });
