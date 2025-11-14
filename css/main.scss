@@ -151,10 +151,10 @@ body {
     color: $muted-blue !important;
 }
 
-/* CORREÇÃO AQUI (Request 2): line-height diminuído */
+/* CORREÇÃO AQUI (Request 2): line-height diminuído BEM */
 .tag-cloud {
     text-align: left;
-    line-height: 1.7;
+    line-height: 1.5;
 }
 /* NUVEM DE TAGS (COM FONTE SANS-SERIF 'Archivo') */
 .tag-link {
@@ -342,7 +342,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
     /* CORREÇÃO AQUI (Request 1): margin-top diminuído */
     .site-header .nav-pills {
-        margin-top: 0.5rem;
+        margin-top: 0.25rem;
         justify-content: center;
     }
 }
