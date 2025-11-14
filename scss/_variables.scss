@@ -1,4 +1,4 @@
-// --- GUIA DE ESTILOS (v4.12 - Ajuste Cor Categoria) ---
+// --- GUIA DE ESTILOS (v4.16 - Teste Fundo Casca de Ovo) ---
 
 // 1. FONTES
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Chivo+Mono:wght@400;700&family=Gloock&display=swap");
@@ -11,12 +11,12 @@ $font-family-mono: "Chivo Mono", monospace;
 // 2. CORES
 $white: #fff;
 $black: #000;
-$light: #e8e9ed; // Fundo "gelo"
+$light: #f7f7f2; // <-- MUDANÇA ESTÁ AQUI
 $dark: #22253c;
 $primary: #dc3545; // Vermelho (Links)
 $premium: #7208fc; // Roxo (Prêmio)
-$muted-blue: #4a5a98; // Azul-Acinzentado (Semestre/Nuvem)
-$category-blue: #0d71cf; // <-- MUDANÇA ESTÁ AQUI
+$muted-blue: #4a5a98; // Azul-Acinzentado (Semestre)
+$category-blue: #0d71cf; // Azul Categoria
 
 // 3. SOBRESCREVENDO VARIÁVEIS DO BOOTSTRAP
 $body-bg: $light;
