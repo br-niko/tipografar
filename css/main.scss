@@ -63,7 +63,7 @@ body {
     }
 }
 
-/* ESTILOS DOS BADGES (COM FONTE MONO) */
+/* ESTILOS DOS BADGES */
 .category-badge {
     display: inline-block;
     padding: 0.35em 0.65em;
@@ -94,11 +94,13 @@ body {
     text-decoration: none;
     font-family: $font-family-mono;
 }
+
+/* A CORREÇÃO ESTÁ AQUI: font-weight de 700 para 400 */
 .award-tag {
     display: inline-block;
     padding: 0.35em 0.65em;
     font-size: 0.75em;
-    font-weight: 700;
+    font-weight: 400;
     line-height: 1;
     color: #fff;
     text-align: center;
@@ -110,7 +112,7 @@ body {
     font-family: $font-family-mono;
 }
 
-/* ESTILO DE CONTORNO (COM FONTE MONO) */
+/* ESTILO DE CONTORNO (CATEGORIA) */
 .category-badge-outline {
     display: inline-block;
     padding: 0.25em 0.55em;
@@ -124,6 +126,24 @@ body {
     border-radius: 0.25rem;
     background-color: transparent;
     border: 1px solid $category-blue;
+    text-decoration: none;
+    font-family: $font-family-mono;
+}
+
+/* NOVO ESTILO: BADGE DE SEMESTRE (CONTORNO) */
+.archive-tag-outline {
+    display: inline-block;
+    padding: 0.25em 0.55em;
+    font-size: 0.75em;
+    font-weight: 400;
+    line-height: 1;
+    color: $muted-blue; /* Cor do texto */
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    background-color: transparent;
+    border: 1px solid $muted-blue; /* Cor da borda */
     text-decoration: none;
     font-family: $font-family-mono;
 }
