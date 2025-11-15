@@ -7,23 +7,20 @@ layout: default
         <h1 class="page-title">{{ page.title }}</h1>
         <hr class="section-divider" />
 
-        <div class="project-meta d-flex align-items-center">
-            {% comment %} MUDANÇA AQUI: de 'category-badge' para
-            'category-badge-outline' {% endcomment %}
+        {% comment %} A CORREÇÃO ESTÁ AQUI: Adicionamos a classe 'flex-wrap'
+        para permitir que os badges quebrem a linha em telas pequenas. {%
+        endcomment %}
+        <div class="project-meta d-flex align-items-center flex-wrap">
             <a
                 href="/categorias/{{ page.categories | first | slugify }}/"
                 class="category-badge-outline me-2 mb-2"
                 >{{ page.categories | first }}</a
             >
-
-            {% comment %} MUDANÇA AQUI: de 'archive-tag' para
-            'archive-tag-outline' {% endcomment %}
             <a
                 href="/semestres/{{ page.semestre | replace: '/', '-' }}/"
                 class="archive-tag-outline me-2 mb-2"
                 >{{ page.semestre }}</a
             >
-
             {% if page.premio and page.premio != "" %}
             <span class="award-tag me-2 mb-2">{{ page.premio }}</span>
             {% endif %}
