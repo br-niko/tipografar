@@ -10,6 +10,15 @@ plugins:
   - jekyll-feed
   - jekyll-archives
 
+# --- Arquivos/Pastas Ignorados pelo Jekyll ---
+exclude:
+  - prototipo-astro
+  - node_modules
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+
 # --- Configuração de Build ---
 permalink: /projetos/:title/
 sass:
