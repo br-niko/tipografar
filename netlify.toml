@@ -1,0 +1,6 @@
+[build]
+  command = "cd prototipo-astro && npm install && npm run build"
+  publish = "prototipo-astro/dist"
+
+[build.environment]
+  NODE_VERSION = "22"
