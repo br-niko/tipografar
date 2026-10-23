@@ -1,0 +1,43 @@
+---
+import { type ProjetoEntry, getProjectSlug, resolveCoverImage, slugify } from '../lib/projects';
+
+interface Props {
+  projeto: ProjetoEntry;
+}
+
+const { projeto } = Astro.props;
+const url = `/projetos/${getProjectSlug(projeto)}`;
+const coverUrl = resolveCoverImage(projeto.data.imagem_capa);
+const firstCategory = projeto.data.categories[0] ?? '';
+const firstCategorySlug = firstCategory ? slugify(firstCategory) : '';
+const hasAward = Boolean(projeto.data.premio && projeto.data.premio.trim() !== '');
+---
+
+<div class="col-md-4 mb-4">
+  <div class="card h-100">
+    <a
+      href={url}
+      class="d-block card-img-placeholder"
+      style={`background-image: url('${coverUrl}')`}
+      aria-label={projeto.data.title}
+    ></a>
+    <div class="card-body">
+      <div class="card-meta-badges">
+        {firstCategory && (
+          <a href={`/categorias/${firstCategorySlug}`} class="category-badge-outline me-2 mb-2">
+            {firstCategory}
+          </a>
+        )}
+        {hasAward && (
+          <span class="award-tag me-2 mb-2">{projeto.data.premio}</span>
+        )}
+      </div>
+      <h5 class="card-title">
+        <a href={url} class="text-decoration-none">{projeto.data.title}</a>
+      </h5>
+      <p class="card-text">
+        <small>{projeto.data.aluno}</small>
+      </p>
+    </div>
+  </div>
+</div>

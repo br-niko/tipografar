@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getAllProjects } from '../lib/projects';
+
+const allProjects = await getAllProjects();
+const featuredProjects = allProjects.filter((p) => p.data.featured);
+---
+
+<BaseLayout title="projetos em destaque">
+  <div class="featured-list-page">
+    <h1 class="page-title">projetos em destaque</h1>
+    <hr class="section-divider" />
+
+    <div class="row">
+      {featuredProjects.map((projeto) => <ProjectCard projeto={projeto} />)}
+    </div>
+  </div>
+</BaseLayout>

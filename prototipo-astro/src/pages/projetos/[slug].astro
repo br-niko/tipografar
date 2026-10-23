@@ -1,0 +1,69 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllProjects, getProjectSlug, slugify } from '../../lib/projects';
+
+export async function getStaticPaths() {
+  const projects = await getAllProjects();
+  return projects.map((projeto) => ({
+    params: { slug: getProjectSlug(projeto) },
+    props: { projeto },
+  }));
+}
+
+const { projeto } = Astro.props;
+const { Content } = await render(projeto);
+const firstCategory = projeto.data.categories[0] ?? '';
+const firstCategorySlug = firstCategory ? slugify(firstCategory) : '';
+const semesterSlug = projeto.data.semestre.replace('/', '-');
+const hasAward = Boolean(projeto.data.premio && projeto.data.premio.trim() !== '');
+---
+
+<BaseLayout title={projeto.data.title}>
+  <article class="project-page">
+    <header class="project-header mb-4">
+      <h1 class="page-title">{projeto.data.title}</h1>
+      <hr class="section-divider" />
+
+      <div class="project-meta d-flex align-items-center flex-wrap">
+        {firstCategory && (
+          <a
+            href={`/categorias/${firstCategorySlug}`}
+            class="category-badge-outline me-2 mb-2"
+          >
+            {firstCategory}
+          </a>
+        )}
+        <a
+          href={`/semestres/${semesterSlug}`}
+          class="archive-tag-outline me-2 mb-2"
+        >
+          {projeto.data.semestre}
+        </a>
+        {hasAward && (
+          <span class="award-tag me-2 mb-2">{projeto.data.premio}</span>
+        )}
+        {projeto.data.tags.map((tag) => (
+          <a
+            href={`/tags/${slugify(tag)}`}
+            class="archive-tag-outline me-2 mb-2"
+            style="opacity: 0.75;"
+          >
+            #{tag}
+          </a>
+        ))}
+      </div>
+
+      <p class="project-author mt-5 mb-0">por {projeto.data.aluno}</p>
+      <hr class="section-divider section-divider--muted mt-0" />
+    </header>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="project-content">
+          <Content />
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

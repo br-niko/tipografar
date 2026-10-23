@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="resultados da busca">
+  <div class="search-results-page">
+    <h1 class="page-title">
+      resultados para "<span id="search-query-display">...</span>"
+    </h1>
+    <hr class="section-divider" />
+
+    <div id="full-search-results-projects">
+      <h2 class="section-title text-muted-blue">projetos</h2>
+      <hr class="section-divider--muted" />
+      <div class="row" id="full-project-results-list">
+        <p>Carregando resultados...</p>
+      </div>
+    </div>
+
+    <div id="full-search-results-taxonomies" class="mt-5">
+      <h2 class="section-title text-muted-blue">categorias, tags e semestres</h2>
+      <hr class="section-divider--muted" />
+      <div
+        id="full-taxonomy-results-list"
+        class="tag-cloud"
+        style="text-align: left;"
+      ></div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  function normalizeText(str: string): string {
+    return (str || '')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .trim();
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const projectList = document.getElementById('full-project-results-list');
+    const taxonomyList = document.getElementById('full-taxonomy-results-list');
+    const queryDisplay = document.getElementById('search-query-display');
+    const headerSearchInput = document.getElementById('search-input') as HTMLInputElement | null;
+
+    if (!projectList || !taxonomyList || !queryDisplay) return;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const rawQuery = (urlParams.get('q') || '').trim();
+    queryDisplay.textContent = rawQuery || 'todos';
+    if (headerSearchInput && rawQuery) {
+      headerSearchInput.value = rawQuery;
+    }
+
+    if (!rawQuery) {
+      projectList.innerHTML =
+        '<p class="col-12">Por favor, digite um termo na barra de busca acima.</p>';
+      taxonomyList.innerHTML = '';
+      return;
+    }
+
+    try {
+      const response = await fetch('/search-index.json');
+      const data = await response.json();
+      const terms = normalizeText(rawQuery).split(/\s+/);
+
+      const matchedProjects = data.projects.filter((p: any) =>
+        terms.every((t: string) => p.searchText.includes(t))
+      );
+
+      const matchedTaxonomies = data.taxonomies.filter((tax: any) =>
+        terms.every((t: string) => tax.searchText.includes(t))
+      );
+
+      if (matchedProjects.length > 0) {
+        projectList.innerHTML = matchedProjects
+          .map((doc: any) => {
+            const awardBadge =
+              doc.premio && doc.premio.trim() !== ''
+                ? `<span class="award-tag me-2 mb-2">${doc.premio}</span>`
+                : '';
+            const categoryBadge = doc.category
+              ? `<a href="${doc.categoryUrl}" class="category-badge-outline me-2 mb-2">${doc.category}</a>`
+              : '';
+
+            return `
+              <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                  <a href="${doc.url}" class="d-block card-img-placeholder" style="background-image: url('${doc.imagemCapa}')"></a>
+                  <div class="card-body">
+                    <div class="card-meta-badges">
+                      ${categoryBadge}
+                      ${awardBadge}
+                    </div>
+                    <h5 class="card-title">
+                      <a href="${doc.url}" class="text-decoration-none">${doc.title}</a>
+                    </h5>
+                    <p class="card-text"><small>${doc.aluno}</small></p>
+                  </div>
+                </div>
+              </div>
+            `;
+          })
+          .join('');
+      } else {
+        projectList.innerHTML = '<p class="col-12">Nenhum projeto encontrado.</p>';
+      }
+
+      if (matchedTaxonomies.length > 0) {
+        taxonomyList.innerHTML = matchedTaxonomies
+          .map((tax: any) => {
+            const badgeClass =
+              tax.type === 'Categoria'
+                ? 'category-badge'
+                : tax.type === 'Arquivo'
+                  ? 'award-tag'
+                  : 'archive-tag';
+            return `<a href="${tax.url}" class="${badgeClass} me-2 mb-2">${tax.name} (${tax.count})</a>`;
+          })
+          .join('');
+      } else {
+        taxonomyList.innerHTML = '<p>Nenhuma tag, categoria ou semestre encontrado.</p>';
+      }
+    } catch (err) {
+      console.error('Erro na página de busca:', err);
+      projectList.innerHTML = '<p class="col-12">Ocorreu um erro ao carregar os resultados.</p>';
+    }
+  });
+</script>

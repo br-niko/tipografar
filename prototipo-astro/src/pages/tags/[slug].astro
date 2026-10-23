@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getAllProjects, getTaxonomies, slugify } from '../../lib/projects';
+
+export async function getStaticPaths() {
+  const { tags } = await getTaxonomies();
+  const allProjects = await getAllProjects();
+
+  return tags.map((tag) => ({
+    params: { slug: tag.slug },
+    props: {
+      tagName: tag.name,
+      projects: allProjects.filter((p) =>
+        p.data.tags.some((t) => slugify(t) === tag.slug)
+      ),
+    },
+  }));
+}
+
+const { tagName, projects } = Astro.props;
+---
+
+<BaseLayout title={`Tag: ${tagName}`}>
+  <div class="list-page">
+    <h1 class="page-title">#{tagName}</h1>
+    <hr class="section-divider" />
+
+    <div class="row">
+      {projects.map((projeto) => <ProjectCard projeto={projeto} />)}
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,32 @@
+---
+import '../styles/main.scss';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+}
+
+const { title = 'Projeto Tipografar' } = Astro.props;
+const pageTitle = title === 'Projeto Tipografar' ? title : `${title} | Projeto Tipografar`;
+---
+
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta
+      name="description"
+      content="Portfólio de projetos de estudantes de design tipográfico e lettering desenvolvidos na disciplina Projeto Tipografar no Centro Universitário Senac - SP."
+    />
+  </head>
+  <body>
+    <Header />
+    <main class="container">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

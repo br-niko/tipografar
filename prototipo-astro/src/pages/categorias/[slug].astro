@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getAllProjects, getTaxonomies, slugify } from '../../lib/projects';
+
+export async function getStaticPaths() {
+  const { categories } = await getTaxonomies();
+  const allProjects = await getAllProjects();
+
+  return categories.map((cat) => ({
+    params: { slug: cat.slug },
+    props: {
+      categoryName: cat.name,
+      projects: allProjects.filter((p) =>
+        p.data.categories.some((c) => slugify(c) === cat.slug)
+      ),
+    },
+  }));
+}
+
+const { categoryName, projects } = Astro.props;
+---
+
+<BaseLayout title={`Categoria: ${categoryName}`}>
+  <div class="list-page">
+    <h1 class="page-title">{categoryName}</h1>
+    <hr class="section-divider" />
+
+    <div class="row">
+      {projects.map((projeto) => <ProjectCard projeto={projeto} />)}
+    </div>
+  </div>
+</BaseLayout>

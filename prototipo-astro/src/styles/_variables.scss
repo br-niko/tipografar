@@ -1,0 +1,28 @@
+// --- GUIA DE ESTILOS (Design Tokens - Projeto Tipografar) ---
+
+// 1. FONTES
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Chivo+Mono:wght@400;700&family=Gloock&display=swap");
+
+$font-family-sans-serif: "Archivo", sans-serif;
+$font-family-serif: "Gloock", serif;
+$font-family-mono: "Chivo Mono", monospace;
+
+// 2. CORES
+$white: #fff;
+$black: #000;
+$light: #f7f7f2; // Fundo Casca de Ovo
+$dark: #22253c;
+$primary: #dc3545; // Vermelho (Links e títulos de cards)
+$premium: #7208fc; // Roxo (Prêmio)
+$muted-blue: #4a5a98; // Azul-Acinzentado (Semestre / Tags)
+$category-blue: #0d71cf; // Azul Categoria
+
+// 3. SOBRESCREVENDO VARIÁVEIS DO BOOTSTRAP
+$body-bg: $light;
+$body-color: $dark;
+$link-color: $primary;
+$headings-font-family: $font-family-serif;
+$headings-color: $dark;
+
+$rfs-base-font-size: 1rem;
+$rfs-font-size-unit: rem;

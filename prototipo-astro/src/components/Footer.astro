@@ -1,0 +1,47 @@
+---
+import { getTaxonomies } from '../lib/projects';
+
+const { categories, semesters, tags } = await getTaxonomies();
+---
+
+<footer class="py-5 mt-5" id="navegacao-tags" style="border-top: 1px solid #FFFFFF;">
+  <div class="container">
+    <div class="mb-5">
+      <h5 class="section-title">arquivo</h5>
+      <hr class="section-divider" />
+
+      <div class="mb-3">
+        {categories.map((cat) => (
+          <a href={`/categorias/${cat.slug}`} class="category-badge me-2 mb-2">
+            {cat.name}
+          </a>
+        ))}
+
+        <a href="/premiados" class="award-tag me-2 mb-2">🏆 premiados</a>
+      </div>
+
+      <div>
+        {semesters.map((sem) => (
+          <a href={`/semestres/${sem.slug}`} class="archive-tag me-2 mb-2">
+            {sem.name}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <div>
+      <div class="tag-cloud" aria-label="Nuvem de palavras automática">
+        {tags.map((tag) => (
+          <a
+            href={`/tags/${tag.slug}`}
+            class="tag-link"
+            style={`font-size: ${tag.fontSizeRem}rem;`}
+            title={`${tag.count} projeto(s) com a tag "${tag.name}"`}
+          >
+            {tag.name}<span class="tag-count">{tag.count}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>

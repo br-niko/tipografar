@@ -1,0 +1,16 @@
+{
+  "name": "tipografar-astro-poc",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Protótipo em Astro do Projeto Tipografar (Senac-SP)",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.1.0",
+    "bootstrap": "^5.3.3",
+    "sass": "^1.80.0"
+  }
+}

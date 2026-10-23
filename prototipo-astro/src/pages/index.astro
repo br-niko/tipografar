@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import {
+  getAllProjects,
+  getProjectSlug,
+  getTaxonomies,
+  resolveCoverImage,
+} from '../lib/projects';
+
+const allProjects = await getAllProjects();
+const { latestSemester } = await getTaxonomies();
+
+const featuredProjects = allProjects.filter((p) => p.data.featured);
+const latestSemesterProjects = latestSemester
+  ? allProjects.filter((p) => p.data.semestre === latestSemester)
+  : [];
+
+const featuredHeroPayload = featuredProjects.map((p) => ({
+  title: p.data.title,
+  aluno: p.data.aluno,
+  url: `/projetos/${getProjectSlug(p)}`,
+  imagemCapa: resolveCoverImage(p.data.imagem_capa),
+}));
+
+const initialHero = featuredHeroPayload[0] ?? null;
+---
+
+<BaseLayout>
+  {initialHero && (
+    <section class="mb-5 pt-4">
+      <div
+        id="random-featured-project"
+        class="row align-items-center"
+        data-projects={JSON.stringify(featuredHeroPayload)}
+      >
+        <div class="col-lg-6">
+          <h1 class="main-feature-title">
+            <a id="hero-title-link" href={initialHero.url} class="text-dark text-decoration-none">
+              {initialHero.title}
+            </a>
+          </h1>
+        </div>
+        <div class="col-lg-6">
+          <a id="hero-image-link" href={initialHero.url} class="main-feature-image-wrapper d-block">
+            <div
+              id="hero-image-box"
+              class="main-feature-image card-img-placeholder"
+              style={`height: 300px; background-image: url('${initialHero.imagemCapa}')`}
+            ></div>
+            <p id="hero-author" class="main-feature-author mt-2">{initialHero.aluno}</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="mb-5">
+    <div class="d-flex justify-content-between align-items-baseline">
+      <h2 class="section-title">destaques</h2>
+      <a href="/destaques" class="link-primary">ver todos →</a>
+    </div>
+    <hr class="section-divider" />
+    <div class="row">
+      {featuredProjects.map((projeto) => <ProjectCard projeto={projeto} />)}
+    </div>
+  </section>
+
+  {latestSemester && (
+    <section class="mb-5">
+      <div class="d-flex justify-content-between align-items-baseline">
+        <h2 class="section-title">{latestSemester}</h2>
+        <a
+          href={`/semestres/${latestSemester.replace('/', '-')}`}
+          class="link-primary"
+        >
+          ver todos →
+        </a>
+      </div>
+      <hr class="section-divider" />
+      <div class="row">
+        {latestSemesterProjects.map((projeto) => <ProjectCard projeto={projeto} />)}
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('random-featured-project');
+    if (!container) return;
+    const raw = container.getAttribute('data-projects');
+    if (!raw) return;
+
+    try {
+      const list = JSON.parse(raw);
+      if (!Array.isArray(list) || list.length <= 1) return;
+      const chosen = list[Math.floor(Math.random() * list.length)];
+
+      const titleLink = document.getElementById('hero-title-link') as HTMLAnchorElement | null;
+      const imageLink = document.getElementById('hero-image-link') as HTMLAnchorElement | null;
+      const imageBox = document.getElementById('hero-image-box') as HTMLElement | null;
+      const author = document.getElementById('hero-author') as HTMLElement | null;
+
+      if (titleLink && imageLink && imageBox && author) {
+        titleLink.textContent = chosen.title;
+        titleLink.href = chosen.url;
+        imageLink.href = chosen.url;
+        imageBox.style.backgroundImage = `url('${chosen.imagemCapa}')`;
+        author.textContent = chosen.aluno;
+      }
+    } catch (err) {
+      console.error('Erro ao sortear destaque:', err);
+    }
+  });
+</script>

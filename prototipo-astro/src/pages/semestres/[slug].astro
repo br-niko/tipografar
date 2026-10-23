@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getAllProjects, getTaxonomies } from '../../lib/projects';
+
+export async function getStaticPaths() {
+  const { semesters } = await getTaxonomies();
+  const allProjects = await getAllProjects();
+
+  return semesters.map((sem) => ({
+    params: { slug: sem.slug },
+    props: {
+      semesterName: sem.name,
+      projects: allProjects.filter((p) => p.data.semestre.trim() === sem.name),
+    },
+  }));
+}
+
+const { semesterName, projects } = Astro.props;
+---
+
+<BaseLayout title={`Semestre ${semesterName}`}>
+  <div class="list-page">
+    <h1 class="page-title">{semesterName}</h1>
+    <hr class="section-divider" />
+
+    <div class="row">
+      {projects.map((projeto) => <ProjectCard projeto={projeto} />)}
+    </div>
+  </div>
+</BaseLayout>

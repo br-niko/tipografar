@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getAllProjects } from '../lib/projects';
+
+const allProjects = await getAllProjects();
+const awardedProjects = allProjects.filter(
+  (p) => p.data.premio && p.data.premio.trim() !== ''
+);
+---
+
+<BaseLayout title="projetos premiados">
+  <div class="premiados-list-page">
+    <h1 class="page-title">projetos premiados</h1>
+    <hr class="section-divider" />
+
+    <div class="row">
+      {awardedProjects.map((projeto) => <ProjectCard projeto={projeto} />)}
+    </div>
+  </div>
+</BaseLayout>
