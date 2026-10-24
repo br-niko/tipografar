@@ -4,7 +4,7 @@ media:
 
 content:
   - name: projetos
-    label: Projetos dos Alunos
+    label: Projetos de Estudantes
     type: collection
     path: _posts
     filename: "{year}-{month}-{day}-{primary}.md"
@@ -26,7 +26,7 @@ content:
         type: string
         required: true
       - name: aluno
-        label: Nome do(a) Aluno(a)
+        label: Nome de Estudante
         type: string
         required: true
       - name: semestre
