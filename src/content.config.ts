@@ -7,7 +7,7 @@ const stringOrArray = z
 
 const projetos = defineCollection({
   // Lê diretamente os arquivos Markdown da pasta _posts do repositório
-  loader: glob({ pattern: '**/*.md', base: '../_posts' }),
+  loader: glob({ pattern: '**/*.md', base: './_posts' }),
   schema: z.object({
     title: z.string(),
     layout: z.string().optional(),

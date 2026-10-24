@@ -1,14 +1,17 @@
 {
   "name": "tipografar",
-  "version": "1.0.0",
-  "description": "Portfolio de tipografia",
-  "main": "index.js",
+  "type": "module",
+  "version": "2.0.0",
+  "description": "Portfólio de projetos da disciplina Projeto Tipografar (Senac-SP)",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sync-assets": "mkdir -p public/assets/images && cp -R assets/images/. public/assets/images/",
+    "dev": "npm run sync-assets && astro dev",
+    "build": "npm run sync-assets && astro build",
+    "preview": "astro preview"
   },
-  "author": "Niko",
-  "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.3.3"
+    "astro": "^5.1.0",
+    "bootstrap": "^5.3.3",
+    "sass": "^1.80.0"
   }
 }
