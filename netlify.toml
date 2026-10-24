@@ -4,3 +4,15 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+[[redirects]]
+  from = "/admin"
+  to = "https://app.pagescms.org/br-niko/tipografar"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/admin/*"
+  to = "https://app.pagescms.org/br-niko/tipografar"
+  status = 302
+  force = true

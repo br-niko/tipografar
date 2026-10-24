@@ -29,7 +29,7 @@ const { categories, semesters, tags } = await getTaxonomies();
       </div>
     </div>
 
-    <div>
+    <div class="mb-4">
       <div class="tag-cloud" aria-label="Nuvem de palavras automática">
         {tags.map((tag) => (
           <a
@@ -42,6 +42,21 @@ const { categories, semesters, tags } = await getTaxonomies();
           </a>
         ))}
       </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center pt-3" style="border-top: 1px solid rgba(74, 90, 152, 0.15);">
+      <small class="text-muted-blue" style="font-family: 'Chivo Mono', monospace; font-size: 0.75rem;">
+        Projeto Tipografar • Centro Universitário Senac - SP
+      </small>
+      <a
+        href="/admin"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="archive-tag-outline"
+        title="Acessar painel administrativo (Pages CMS)"
+      >
+        admin ↗
+      </a>
     </div>
   </div>
 </footer>

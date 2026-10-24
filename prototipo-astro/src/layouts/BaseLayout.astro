@@ -21,7 +21,6 @@ const pageTitle = title === 'Projeto Tipografar' ? title : `${title} | Projeto T
       name="description"
       content="Portfólio de projetos de estudantes de design tipográfico e lettering desenvolvidos na disciplina Projeto Tipografar no Centro Universitário Senac - SP."
     />
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
   </head>
   <body>
     <Header />
@@ -29,16 +28,5 @@ const pageTitle = title === 'Projeto Tipografar' ? title : `${title} | Projeto T
       <slot />
     </main>
     <Footer />
-    <script is:inline>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", function (user) {
-          if (!user) {
-            window.netlifyIdentity.on("login", function () {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    </script>
   </body>
 </html>
