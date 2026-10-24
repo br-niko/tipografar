@@ -9,7 +9,7 @@ content:
     path: _posts
     filename: "{year}-{month}-{day}-{primary}.md"
     view:
-      fields: [title, aluno, semestre, featured]
+      fields: [title, aluno, semestre, categories, featured]
       primary: title
       sort: [semestre]
       default:
@@ -33,19 +33,33 @@ content:
         label: Semestre (ex. 2025/2)
         type: string
         required: true
+        pattern:
+          regex: '^\d{4}/[12]$'
+          message: "Use o formato AAAA/1 ou AAAA/2 (ex: 2025/2)"
       - name: categories
-        label: Categorias
-        type: string
-        list: true
+        label: Categoria
+        type: select
+        required: true
         default: ["design de tipos"]
+        options:
+          multiple: true
+          values:
+            - value: "design de tipos"
+              label: "Design de Tipos"
+            - value: "lettering"
+              label: "Lettering"
+            - value: "experimento de processo"
+              label: "Experimento de Processo"
       - name: tags
         label: Tags (Nuvem de Palavras)
         type: string
         list: true
+        description: "Adicione palavras-chave livres para alimentar a busca e a nuvem de tags automática."
       - name: premio
         label: Prêmio (opcional)
         type: string
         default: ""
+        description: "Deixe em branco se não houver ou preencha ex: 🏆 Bienal de Design Gráfico"
       - name: featured
         label: Destaque na Home?
         type: boolean
