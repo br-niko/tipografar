@@ -1,0 +1,58 @@
+media:
+  input: assets/images
+  output: /assets/images
+
+content:
+  - name: projetos
+    label: Projetos dos Alunos
+    type: collection
+    path: _posts
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [title, aluno, semestre, featured]
+      primary: title
+      sort: [semestre]
+      default:
+        sort: semestre
+        order: desc
+    fields:
+      - name: layout
+        label: Layout
+        type: string
+        hidden: true
+        default: projeto
+      - name: title
+        label: Título do Projeto
+        type: string
+        required: true
+      - name: aluno
+        label: Nome do(a) Aluno(a)
+        type: string
+        required: true
+      - name: semestre
+        label: Semestre (ex. 2025/2)
+        type: string
+        required: true
+      - name: categories
+        label: Categorias
+        type: string
+        list: true
+        default: ["design de tipos"]
+      - name: tags
+        label: Tags (Nuvem de Palavras)
+        type: string
+        list: true
+      - name: premio
+        label: Prêmio (opcional)
+        type: string
+        default: ""
+      - name: featured
+        label: Destaque na Home?
+        type: boolean
+        default: false
+      - name: imagem_capa
+        label: Imagem de Capa
+        type: image
+      - name: body
+        label: Conteúdo do Projeto
+        type: rich-text

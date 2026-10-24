@@ -13,6 +13,8 @@ plugins:
 # --- Arquivos/Pastas Ignorados pelo Jekyll ---
 exclude:
   - prototipo-astro
+  - .pages.yml
+  - netlify.toml
   - node_modules
   - Gemfile
   - Gemfile.lock
